@@ -1,0 +1,13 @@
+node_modules/
+.sass-cache/
+dev/
+release/
+
+**/_icons.scss
+**/icons.png
+sass/*.svg
+
+**/*.db
+**/*.log
+
+**/.idea

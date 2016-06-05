@@ -1,0 +1,75 @@
+// 登陆页
+.page-login {
+	background: #141212;
+	.container {
+		padding: 0 fitPx(82px); 
+		text-align: center;
+		height: fitPx(662px);
+		overflow: hidden;
+	}
+	.min-logo {
+		margin: fitPx(36px) 0 fitPx(87px); 
+		font-size: 0;
+		img {
+			width: fitPx(178px);
+		}
+	}
+	.input-box {
+		height: fitPx(67px);
+		line-height: fitPx(67px);
+		margin-bottom: fitPx(42px);
+		&:last-child {
+			margin-bottom: 0;
+		}
+		.code {
+			position: absolute;
+			top: 0;
+			right: fitPx(7px);
+			img {
+				width: fitPx(132px);
+				vertical-align: middle;
+			}
+		}
+	}
+	.forget-pass {
+		line-height: 100%;
+		font-size: fitPx(16px);
+		color: #a9a9a9;
+		margin: fitPx(12px) 0 fitPx(33px);
+		display: block;
+	}
+	.submit {
+		background: #108f10;
+		border-radius: fitPx(5px);
+		width: fitPx(337px);
+		height: fitPx(83px);
+		border: none;
+		font-size: fitPx(30px);
+		color: #fff;
+		border-top: 1px solid #14af14;
+	}
+	.join-block {
+		height: fitPx(299px);
+		background: #1e1e1e;
+		text-align: center;
+		overflow: hidden;
+		p {
+			line-height: 100%;
+			margin: fitPx(87px) 0 fitPx(31px);
+			color: #a9a9a9;
+			font-size: fitPx(16px);
+		}
+		.btn {
+			display: inline-block;
+			width: fitPx(337px);
+			height: fitPx(83px);
+			line-height: fitPx(83px);
+			border-radius: fitPx(5px);
+			border: none;
+			font-size: fitPx(30px);
+			color: #fff;
+			background: -webkit-linear-gradient(90deg, #232121 0%, #424141 100%);
+			box-shadow: 1px 2px 0px 0px rgba(20, 20, 20, 0.75);
+		}
+	}
+}

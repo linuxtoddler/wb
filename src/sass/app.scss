@@ -1,0 +1,87 @@
+@import "reset";
+@import "common";
+@import "sprites";
+@import "animation";
+@import "plugin.swiper";
+
+.app-view {
+  height: 100%;
+  position: relative;
+  background: #f1effc;
+  padding-bottom: fitPx(85px);
+  & > div {
+  	min-height: 100%;
+  }
+}
+
+footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: fitPx(85px);
+	nav {
+		background: $secondaryColor;
+		overflow: hidden;
+		height: inherit;
+	}
+	a {
+		width: 20%;
+		height: inherit;
+		float: left;
+		color: #fff;
+		font-size: fitPx(20px);
+		text-align: center;
+		&.active {
+			background: $importantColor;
+		}
+	}
+}
+
+.input-box {
+	overflow: hidden;
+	position: relative;
+	input[type="email"], input[type="number"], input[type="text"], input[type="password"], input[type="date"], select {
+		display: block;
+		width: 100%;
+		height: 100%;
+		border-radius: fitPx(5px);
+		background: #fff;
+		padding-left: fitPx(13px);
+		border: none;
+    line-height: inherit;
+  	color: #1a1c1c;
+  	font-size: fitPx(22px);
+    &::-webkit-input-placeholder {
+    	color: #a9a9a9;
+    	font-size: fitPx(22px);
+    }
+    &.error {
+	    border: 1px solid #ff0000;
+    }
+	}
+	select + .arrow, input[type="date"] + .arrow	{
+		position: absolute;
+		margin-right: fitPx(17px);
+		top: 0;
+		right: 0;
+		&:after {
+			content: "";
+			border: 0 solid transparent;
+			border-width: fitPx(16px) fitPx(7px) 0 fitPx(7px);
+			border-top-color: #000;
+			display: inline-block;
+			position: relative;
+			top: fitPx(6px);
+		}
+	}
+}
+
+// 弹窗
+@import 'ui.Popup';
+
+// 首页
+@import 'Page.Home';
+
+// 登陆
+@import 'Page.Login';
