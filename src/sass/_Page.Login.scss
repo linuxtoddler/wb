@@ -1,75 +1,45 @@
 // 登陆页
 .page-login {
-	background: #141212;
-	.container {
-		padding: 0 fitPx(82px); 
+	.banner {
+		height: fitPx(383px);
+		line-height: fitPx(383px);
 		text-align: center;
-		height: fitPx(662px);
-		overflow: hidden;
+		background: url(/assets/images/login-banner.png) no-repeat center;
+		background-size: 100% 100%;
 	}
-	.min-logo {
-		margin: fitPx(36px) 0 fitPx(87px); 
-		font-size: 0;
-		img {
-			width: fitPx(178px);
+	.login-form {
+		padding: fitPx(29px) fitPx(22px);
+		.input-box {
+			height: fitPx(82px);
+			line-height: fitPx(82px);
+			margin-bottom: fitPx(50px);
 		}
-	}
-	.input-box {
-		height: fitPx(67px);
-		line-height: fitPx(67px);
-		margin-bottom: fitPx(42px);
-		&:last-child {
-			margin-bottom: 0;
-		}
-		.code {
-			position: absolute;
-			top: 0;
-			right: fitPx(7px);
-			img {
-				width: fitPx(132px);
-				vertical-align: middle;
+		.code-node {
+			overflow: hidden;
+			.input-box {
+				margin-right: fitPx(13px);
+				width: fitPx(400px);
+				float: left;
+			}
+			.code {
+				width: fitPx(180px);
+				height: fitPx(82px);
+				overflow: hidden;
+				background: #fff;
 			}
 		}
-	}
-	.forget-pass {
-		line-height: 100%;
-		font-size: fitPx(16px);
-		color: #a9a9a9;
-		margin: fitPx(12px) 0 fitPx(33px);
-		display: block;
-	}
-	.submit {
-		background: #108f10;
-		border-radius: fitPx(5px);
-		width: fitPx(337px);
-		height: fitPx(83px);
-		border: none;
-		font-size: fitPx(30px);
-		color: #fff;
-		border-top: 1px solid #14af14;
-	}
-	.join-block {
-		height: fitPx(299px);
-		background: #1e1e1e;
-		text-align: center;
-		overflow: hidden;
-		p {
-			line-height: 100%;
-			margin: fitPx(87px) 0 fitPx(31px);
-			color: #a9a9a9;
-			font-size: fitPx(16px);
-		}
 		.btn {
-			display: inline-block;
-			width: fitPx(337px);
-			height: fitPx(83px);
-			line-height: fitPx(83px);
+			display: block;
+			width: 100%;
+			height: fitPx(84px);
+			line-height: fitPx(84px);
 			border-radius: fitPx(5px);
-			border: none;
-			font-size: fitPx(30px);
+			text-align: center;
 			color: #fff;
-			background: -webkit-linear-gradient(90deg, #232121 0%, #424141 100%);
-			box-shadow: 1px 2px 0px 0px rgba(20, 20, 20, 0.75);
+			background: $importantColor;
+			font-size: fitPx(36px);
+			border: none;
+			margin-bottom: fitPx(26px);
 		}
 	}
 }

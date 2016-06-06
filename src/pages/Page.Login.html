@@ -1,28 +1,24 @@
 <div class="container">
-	<div class="min-logo">
-		<img src="/assets/images/logo.png" alt="xbet">
-	</div>
-	<form data-xjs-mixin="plugin.formValidate" class="login-form">
-		<div class="row">
+	<div class="banner"></div>
+	<form class="login-form">
+		<div class="input-box">
+			<label for="username">账号</label>
+			<input type="text" name="loginName" id="username">
+		</div>
+		<div class="input-box">
+			<label for="password">密码</label>
+			<input type="text" name="password" id="password">
+		</div>
+		<div class="code-node">
 			<div class="input-box">
-				<input type="text" name="userName" placeholder="请输入您的用户名">
-				<div class="error-popup">请输入账号</div>
+				<label for="code">验证码</label>
+				<input type="number" name="code" id="code" autocomplete="off">
 			</div>
-			<div class="input-box">
-				<input type="password" name="password" placeholder="请输入您的密码">
-			</div>
-			<div class="input-box code-node">
-				<input type="number" name="code" placeholder="请输入验证码" autocomplete="off">
-				<div class="code">
-					<img data-xjs-element="codeNode">
-				</div>
+			<div class="code">
+				<img>
 			</div>
 		</div>
-		<a onclick="xjs.onlineService();" class="forget-pass">忘记密码了？</a>
-		<input type="submit" value="登陆" class="submit">
+		<input type="submit" class="btn" value="登陆">
+		<a href="#join/" class="btn">免费注册</a>
 	</form>
-</div>
-<div class="join-block">
-	<p class="tips">您还没有X-bet账号吗？</p>
-	<a href="#join/" class="btn">注册账号</a>
 </div>

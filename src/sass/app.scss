@@ -5,13 +5,24 @@
 @import "plugin.swiper";
 
 .app-view {
-  height: 100%;
+  min-height: 100%;
   position: relative;
   background: #f1effc;
   padding-bottom: fitPx(85px);
   & > div {
   	min-height: 100%;
   }
+}
+
+header {
+	width: 100%;
+	height: fitPx(80px);
+	line-height: fitPx(80px);
+	color: #fff;
+	text-align: center;
+	position: relative;
+	font-size: fitPx(36px);
+	background: $secondaryColor;
 }
 
 footer {
@@ -21,7 +32,7 @@ footer {
 	width: 100%;
 	height: fitPx(85px);
 	nav {
-		background: $secondaryColor;
+		background: $secondaryColor;
 		overflow: hidden;
 		height: inherit;
 	}
@@ -41,16 +52,16 @@ footer {
 .input-box {
 	overflow: hidden;
 	position: relative;
-	input[type="email"], input[type="number"], input[type="text"], input[type="password"], input[type="date"], select {
+	input:not([type="submit"]), select {
 		display: block;
 		width: 100%;
 		height: 100%;
 		border-radius: fitPx(5px);
-		background: #fff;
+		background: #fefdfd;
 		padding-left: fitPx(13px);
 		border: none;
     line-height: inherit;
-  	color: #1a1c1c;
+  	color: #333;
   	font-size: fitPx(22px);
     &::-webkit-input-placeholder {
     	color: #a9a9a9;
@@ -59,6 +70,18 @@ footer {
     &.error {
 	    border: 1px solid #ff0000;
     }
+	}
+	label {
+		font-size: fitPx(28px);
+		color: #646464;
+		position: absolute;
+		left: 0;
+		top: 0;
+		line-height: inherit;
+		padding-left: fitPx(20px);
+		& + input {
+			padding-left: fitPx(120px) !important;
+		}
 	}
 	select + .arrow, input[type="date"] + .arrow	{
 		position: absolute;
@@ -77,6 +100,17 @@ footer {
 	}
 }
 
+.tips-node {
+	height: fitPx(40px);
+	line-height: fitPx(40px);
+	background: $importantColor;
+	color: #fff;
+	font-size: fitPx(14px);
+	a {
+		color:  inherit;
+	}
+}
+
 // 弹窗
 @import 'ui.Popup';
 
@@ -85,3 +119,6 @@ footer {
 
 // 登陆
 @import 'Page.Login';
+
+// 注册
+@import 'Page.Register';
