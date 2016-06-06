@@ -1,0 +1,54 @@
+// 优惠活动
+.page-promo {
+	.banner-node {
+		height: fitPx(320px);
+		.swiper-slide {
+			width: 100%;
+			height: 100%;
+			display: block;
+		}
+		img {
+			width: 100%;
+			height: 100%;
+			transition: all ease .1s;
+		}
+	}
+	.container {
+		padding: fitPx(16px) fitPx(22px) 0;
+		.row .col-6:last-child {
+			padding-left: fitPx(6px);
+		}
+	}
+	.promo-node	{
+		width: fitPx(290px);
+		height: fitPx(207px);
+		display: block;
+		border: 1px solid #ccc;
+		border-radius: fitPx(4px);
+		background-color: #fff;
+		overflow: hidden;
+		margin-bottom: fitPx(12px);
+		.tit {
+			font-size: fitPx(16px);
+			color: $titleColor;
+			height: fitPx(28px);
+			line-height: fitPx(28px);
+			text-indent: fitPx(5px);
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+		img {
+			width: fitPx(128px);
+			height: fitPx(170px);
+			margin-left: fitPx(4px);
+		}
+		.intro {
+			color: #999;
+			font-size: fitPx(14px);
+			line-height: fitPx(29px);
+			padding: 0 fitPx(8px) 0 fitPx(7px);
+			overflow: hidden;
+		}
+	}
+}

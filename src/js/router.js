@@ -3,7 +3,8 @@
 	xjs.router.setup({
 		'#home/': 'Home',
 		'#login/': 'Login',
-		'#join/': 'Register'
+		'#join/': 'Register',
+		'#promo/': 'Promo'
 	},
 	{
 		before: function(hash, dtd) {
@@ -42,5 +43,9 @@
 
 	xjs.router.define('Register', function() {
 		xjs.createView('Page.Register');
+	});
+
+	xjs.router.define('Promo', function() {
+		xjs.createView('Page.Promo');
 	});
 })();
