@@ -5,7 +5,8 @@
 		'#login/': 'Login',
 		'#join/': 'Register',
 		'#promo/': 'Promo',
-		'#user/': 'Account'
+		'#user/': 'Account',
+		'#addcard/': 'addBankCard'
 	},
 	{
 		before: function(hash, dtd) {
@@ -52,5 +53,9 @@
 
 	xjs.router.define('Account', function() {
 		xjs.createView('Page.Account');
+	});
+
+	xjs.router.define('addBankCard', function() {
+		xjs.createView('Page.addBankCard');
 	});
 })();

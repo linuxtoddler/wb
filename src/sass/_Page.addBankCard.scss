@@ -1,0 +1,80 @@
+// 绑定银行卡
+.page-addbankcard {
+	.container {
+		padding: fitPx(20px) fitPx(22px) 0;
+	}
+	.input-box {
+		height: fitPx(84px);
+		line-height: fitPx(82px);
+		border: 1px solid #e1e1e1;
+		margin-bottom: fitPx(10px);
+		border-radius: fitPx(4px);
+		input, select {
+			font-size: fitPx(30px);
+			color: $titleColor;
+			padding-left: fitPx(20px);
+		}
+		.select-arrow {
+			position: absolute;
+			right: fitPx(5px);
+			top: fitPx(8px);
+			width: fitPx(63px);
+			height: fitPx(68px);
+			line-height: fitPx(66px);
+			border: 1px solid #cdcad6;
+			border-radius: fitPx(4px);
+			text-align: center;
+			pointer-events: none;
+			&:before {
+				content: "";
+				display: inline-block;
+				border: fitPx(12px) solid transparent;
+				border-top: fitPx(12px) solid #000;
+				vertical-align: middle;
+				margin-top: fitPx(10px);
+			}
+		}
+		&.disabled {
+			background-color: #ccc;
+			label {
+				color: #999;
+			}
+		}
+	}
+	.address-box {
+		.col-6 {
+			position: relative;
+		}
+	}
+	.submit {
+		width: 100%;
+		height: fitPx(84px);
+		background-color: $importantColor;
+		color: #fff;
+		font-size: fitPx(36px);
+		border: none;
+		border-radius: fitPx(4px);
+		margin-top: fitPx(62px);
+	}
+	.card-list {
+		width: 100%;
+		border: 1px solid #ccc;
+		color: #666;
+		background-color: #f3f3f3;
+		margin: fitPx(29px) 0 fitPx(23px);
+		td {
+			text-align: center;
+			border: 1px solid #ccc;
+			height: fitPx(31px);
+		}
+		thead tr:first-child td {
+			text-align: left;
+			padding-left: fitPx(11px);
+		}
+		tbody {
+			tr:nth-child(odd) {
+				background-color: #fdfdfd;
+			}
+		}
+	}
+}
