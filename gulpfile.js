@@ -7,7 +7,7 @@ var gulp = require('gulp')
     , through2 = require('through2')
 
     , autoprefixer = require('gulp-autoprefixer')
-    // , svgSprite = require('gulp-svg-sprites')
+    , spritesmith = require("gulp.spritesmith")
     , sass = require('gulp-sass')
 
     , cssmin = require('gulp-cssmin')
@@ -85,57 +85,55 @@ gulp.task('concat:app', function() {
     .pipe(gulpIf(revStatus, gulp.dest(dest)));
 });
 
-// gulp.task('sprites', function() {
-//   var icons = {};
-//   return gulp.src(src + 'icons/*.svg')
-//     .pipe(svgSprite({
-//       mode: "symbols",
-//       svgId: "icon-%f",
-//       preview: false,
-//       svg: {
-//         symbols: "symbols.svg"
-//       },
-//       transformData: function(data, config) {
-//         var array = data.svg, i, j;
-//         for (i = 0; i < array.length; i++) {
-//           var icon = array[i];
-//           var str = icon.raw;
-//           icons[icon.name] = {
-//             width: icon.width,
-//             height: icon.height,
-//             color: str.match(/fill="(.*?)"/g)[0].slice(6, -1)
-//           };
-//           var contents = str.match(/\s(d=".*?")/g);
-//           var colors = str.match(/fill="(.*?)"/g);
-//           icon.raw = '';
-//           for (j = 0; j < contents.length; j++) {
-//             icon.raw += '<path' + contents[j] + ' ' + colors[j] + '/>';
-//           };
-//         }
-//         return data;
-//       }
-//     }))
-//     .pipe(through2.obj(function(file, enc, cb) {
-//       var styleTpl = (function() {
-//         var common, inner = '';
-//         for (var i in icons) {
-//           inner += '.icon.' + i + ' {\n' +
-//             '  width: ' + icons[i].width / baseSize + 'rem;\n' +
-//             '  height: ' + icons[i].height / baseSize + 'rem;\n' +
-//             '  fill: ' + icons[i].color + ';\n' +
-//           '}\n';
-//         }
-//         common = '.icon {\n' +
-//           '  display: inline-block;\n' +
-//           '  vertical-align: middle;\n' +
-//         '}\n' + inner;
-//         return common;
-//       })();
-//       this.push(file);
-//       fs.writeFile(src + 'sass/_sprites.scss', styleTpl, cb);
-//     }))
-//     .pipe(gulp.dest(src));
-// });
+gulp.task('sprites', function() {
+  var spritePoistion = ""
+    + "@function sprite-icon($name) {\n"
+    + "\t@return #{map-get($icons-sprite-map, $name)};\n"
+    + "}";
+  // 自动生成sprite以及sass mixin
+  // 可以使用sprite-icon(icon-name)获取某个图标的某个状态的坐标
+  return gulp.src(src + "icons/*.png")
+    // .pipe(plumber())
+    .pipe(spritesmith({
+      imgName: "icons.png"
+      , padding: 10
+      , cssName: "_icons.scss"
+      , cssTemplate: function(data) {
+        function fitPx(px, offset) {
+          var px = px.replace('px', '');
+          var temp = (px / 40 + (offset || 0)).toFixed(2);
+          return temp == "0.00" ? "0" : temp + "rem";
+        }
+        var prefix = "";
+        var icons = "";
+        var smap = "$icons-sprite-map: (";
+        data.sprites.forEach(function(icon, i) {
+          var name = icon.name.replace(/\./g, '-');
+          var px = icon.px;
+          var iconName = "icon-" + name;
+          smap += (i ? ",\n\t" : "\n\t") + iconName + ": \"" + fitPx(px.offset_x) + " " + fitPx(px.offset_y) + "\"";
+          prefix += (prefix ? ",\n" : "") + ".icon-" + name;
+          icons += (icons ? "\n" : "") + ".icon-" + name + " {\n" +
+            "  width: " + fitPx(px.width) + ";\n" +
+            "  height: " + fitPx(px.height) + ";\n" +
+            "  background-position: " + fitPx(px.offset_x) + " " + fitPx(px.offset_y) + ";\n" +
+            "}";
+        });
+        var total_width = fitPx(data.sprites[0].total_width.toString());
+        var total_height = fitPx(data.sprites[0].total_height.toString());
+        prefix += " {\n  background-image:url(/assets/images/" + data.spritesheet.escaped_image + ");\n  background-size: " + total_width + " " + total_height + ";\n  background-repeat: no-repeat;\n}";
+        return smap + "\n);\n" + spritePoistion + "\n" + prefix + "\n" + icons;
+      }
+    }))
+    .pipe(rename(function(path) {
+      if (path.extname === ".scss") {
+        path.dirname = "sass";
+      } else {
+        path.dirname = "images";
+      }
+    }))
+    .pipe(gulp.dest(src));
+});
 
 gulp.task('sass', function() {
   var manifest = gulp.src("rev-manifest.json");
@@ -237,9 +235,9 @@ gulp.task('server', function() {
   gulp.watch(src + 'sass/*.scss').on('change', function() {
     sequence('sass', reload);
   });
-  // gulp.watch(src + 'icons/*.svg').on('change', function() {
-  //   sequence('sprites', reload);
-  // });
+  gulp.watch(src + 'icons/*.png').on('change', function() {
+    sequence('sprites', reload);
+  });
   gulp.watch(src + 'images/*.{png,jpg}').on('change', function() {
     sequence('imagemin', reload);
   });

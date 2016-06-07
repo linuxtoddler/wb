@@ -1,9 +1,24 @@
 <footer>
 	<nav>
-		<a href="" class="menu <%if(location.hash == \'#home/\'){%>active<%}%>">首页</a>
-		<a href="" class="menu">存款</a>
-		<a href="" class="menu">提款</a>
-		<a href="" class="menu">转账</a>
-		<a href="" class="menu">我的</a>
+		<a href="#home/" class="menu <%if(location.hash == \'#home/\'){%>active<%}%>">
+			<div><i class="icon icon-home"></i></div>
+			<p>首页</p>
+		</a>
+		<a href="#deposit/" class="menu <%if(location.hash == \'#deposit/\'){%>active<%}%>">
+			<div><i class="icon icon-deposit"></i></div>
+			<p>存款</p>
+		</a>
+		<a href="#withdrawals/" class="menu <%if(location.hash == \'#withdrawals/\'){%>active<%}%>">
+			<div><i class="icon icon-withdrawals"></i></div>
+			<p>提款</p>
+		</a>
+		<a href="#tranfers/" class="menu <%if(location.hash == \'#tranfers/\'){%>active<%}%>">
+			<div><i class="icon icon-tranfers"></i></div>
+			<p>转账</p>
+		</a>
+		<a href="#user/" class="menu <%if(location.hash == \'#user/\'){%>active<%}%>">
+			<div><i class="icon icon-account"></i></div>
+			<p>我的</p>
+		</a>
 	</nav>
 </footer>

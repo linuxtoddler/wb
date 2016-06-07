@@ -4,7 +4,8 @@
 		'#home/': 'Home',
 		'#login/': 'Login',
 		'#join/': 'Register',
-		'#promo/': 'Promo'
+		'#promo/': 'Promo',
+		'#user/': 'Account'
 	},
 	{
 		before: function(hash, dtd) {
@@ -47,5 +48,9 @@
 
 	xjs.router.define('Promo', function() {
 		xjs.createView('Page.Promo');
+	});
+
+	xjs.router.define('Account', function() {
+		xjs.createView('Page.Account');
 	});
 })();

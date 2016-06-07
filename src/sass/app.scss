@@ -1,6 +1,6 @@
 @import "reset";
 @import "common";
-@import "sprites";
+@import "icons";
 @import "animation";
 @import "plugin.swiper";
 
@@ -23,6 +23,12 @@ header {
 	position: relative;
 	font-size: fitPx(36px);
 	background: $secondaryColor;
+	.pos {
+		padding-left: fitPx(31px);
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
 }
 
 footer {
@@ -39,12 +45,16 @@ footer {
 	a {
 		width: 20%;
 		height: inherit;
+		line-height: fitPx(57px);
 		float: left;
 		color: #fff;
 		font-size: fitPx(20px);
 		text-align: center;
 		&.active {
 			background: $importantColor;
+		}
+		p {
+			line-height: 100%;
 		}
 	}
 }
@@ -108,6 +118,11 @@ footer {
 	font-size: fitPx(14px);
 	a {
 		color:  inherit;
+		display: block;
+		padding-left: fitPx(27px);
+	}
+	.icon-tips {
+		margin-right: fitPx(17px);
 	}
 }
 
@@ -125,3 +140,6 @@ footer {
 
 // 优惠活动
 @import 'Page.Promo';
+
+// 账户中心
+@import 'Page.Account';
