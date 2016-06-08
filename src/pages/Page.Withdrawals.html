@@ -1,0 +1,64 @@
+@import 'common/header.html'
+@import 'common/tips.html'
+<div class="progress-node">
+	<div class="step-node">
+		<div class="circle">1</div>
+		绑定银行卡
+	</div>
+	<div class="step-node">
+		<div class="circle">2</div>
+		输入提款金额
+	</div>
+	<div class="step-node">
+		<div class="circle">3</div>
+		提交等待审核
+	</div>
+</div>
+<div class="contianer">
+	<form>
+		<div class="input-box">
+			<label for="money">提款金额</label>
+			<input type="number" id="money" placeholder="请输入提款金额">
+		</div>
+		<div class="bank-list">
+			<div class="input-box">
+				<label for="bank-1">
+					<img src="/assets/images/test/bank-1.jpg">
+					<span>***************3241</span>
+					<div class="ui-checkbox">
+						<input type="radio" name="bank" id="bank-1">
+						<label for="bank-1"></label>
+					</div>
+				</label>
+			</div>
+			<div class="input-box">
+				<label for="bank-1">
+					<img src="/assets/images/test/bank-1.jpg">
+					<span>***************3241</span>
+					<div class="ui-checkbox">
+						<input type="radio" name="bank" id="bank-2">
+						<label for="bank-2"></label>
+					</div>
+				</label>
+			</div>
+			<div class="input-box">
+				<label for="bank-1">
+					<img src="/assets/images/test/bank-1.jpg">
+					<span>***************3241</span>
+					<div class="ui-checkbox">
+						<input type="radio" name="bank" id="bank-3">
+						<label for="bank-3"></label>
+					</div>
+				</label>
+			</div>
+		</div>
+		<div class="code-layer">
+			<div class="input-box">
+				<input type="text">
+			</div>
+			<span class="btn">发送验证码</span>
+		</div>
+		<input type="submit" class="submit" name="提交">
+	</form>
+</div>
+@import 'common/navigator.html'

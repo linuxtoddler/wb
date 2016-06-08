@@ -62,6 +62,8 @@ footer {
 .input-box {
 	overflow: hidden;
 	position: relative;
+	border: 1px solid #d5d4d7;
+	border-radius: fitPx(4px);
 	input:not([type="submit"]), select {
 		display: block;
 		width: 100%;
@@ -81,7 +83,7 @@ footer {
 	    border: 1px solid #ff0000;
     }
 	}
-	label {
+	& > label {
 		font-size: fitPx(28px);
 		color: #646464;
 		position: absolute;
@@ -90,7 +92,7 @@ footer {
 		line-height: inherit;
 		padding-left: fitPx(20px);
 		& + input {
-			padding-left: fitPx(120px) !important;
+			padding-left: fitPx(140px) !important;
 		}
 	}
 	select + .arrow, input[type="date"] + .arrow	{
@@ -146,3 +148,6 @@ footer {
 
 // 绑定银行卡
 @import 'Page.addBankCard';
+
+// 提款
+@import 'Page.Withdrawals';

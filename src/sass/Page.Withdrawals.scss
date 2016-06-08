@@ -1,0 +1,113 @@
+// 提款
+.page-withdrawals {
+	.progress-node {
+		height: fitPx(112px);
+		text-align: center;
+		display: flex;
+		background: #fff;
+		border-bottom: 1px solid #e5e5e5;
+		.step-node {
+			flex: 1;
+			text-align: center;
+			padding-top: fitPx(17px);
+			color: $textColor;
+			font-size: fitPx(20px);
+			position: relative;
+			&:before, &:after {
+				content: "";
+				top: fitPx(42px);
+				width: calc(50% - #{fitPx(23px)});
+				height: 1px;
+				background: #0099ff;
+				position: absolute;
+			}
+			&:before {
+				left: 0;
+			}
+			&:after {
+				right: 0;
+			}
+			&:first-child:before {
+				display: none;
+			}
+			&:last-child:after {
+				display: none;
+			}
+		}
+		.circle {
+			width: fitPx(46px);
+			height: fitPx(46px);
+			line-height: fitPx(40px);
+			border: fitPx(3px) solid #0099ff;
+			border-radius: 50%;
+			font-size: fitPx(30px);
+			margin: 0 auto fitPx(15px);
+		}
+	}
+	.contianer {
+		padding: fitPx(24px) fitPx(23px) 0;
+		overflow: hidden;
+		.input-box {
+			height: fitPx(84px);
+			line-height: fitPx(82px);
+		}
+		.bank-list {
+			margin: fitPx(62px) 0 fitPx(28px);
+			.input-box {
+				margin-bottom: fitPx(9px);
+				background: #fefdfd;
+				font-size: 0;
+				position: relative;
+				& > label {
+					width: 100%;
+					height: 100%;
+				}
+				img {
+					vertical-align: middle;
+					width: fitPx(244px);
+					margin-right: fitPx(17px);
+				}
+				span {
+					vertical-align: middle;
+					font-size: fitPx(24px);
+				}
+			}
+		}
+		.ui-checkbox {
+			display: inline-block;
+			vertical-align: middle;
+			margin-left: fitPx(30px);
+		}
+		.code-layer {
+			overflow: hidden;
+			.input-box {
+				width: fitPx(360px);
+				float: left;
+			}	
+			.btn {
+				width: fitPx(220px);
+				height: fitPx(82px);
+				line-height: fitPx(82px);
+				border-radius: fitPx(4px);
+				text-align: center;
+				font-size: fitPx(30px);
+				float: right;
+				background: $importantColor;
+				color: #fff;
+			}
+		}
+		.submit {
+			display: block;
+			width: 100%;
+			height: fitPx(84px);
+			border: none;
+			border-radius: fitPx(4px);
+			text-align: center;
+			font-size: fitPx(30px);
+			float: right;
+			background: $importantColor;
+			color: #fff;
+			margin: fitPx(82px) 0;
+		}
+	}
+}
