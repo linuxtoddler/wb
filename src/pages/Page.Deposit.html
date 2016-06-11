@@ -1,0 +1,29 @@
+@import 'common/header.html'
+@import 'common/tips.html'
+<div class="progress-node">
+	<div class="step-node active">
+		<div class="circle">1</div>
+		填写汇款单
+	</div>
+	<div class="step-node">
+		<div class="circle">2</div>
+		获取万博指导账号
+	</div>
+	<div class="step-node">
+		<div class="circle">3</div>
+		进行汇款操作
+	</div>
+	<div class="step-node">
+		<div class="circle">4</div>
+		等待存款到账
+	</div>
+</div>
+<div class="contianer">
+	<div class="tab-switch-btns">
+		<a href="/#deposit/1/" class="active">手动存款</a>
+		<a href="/#deposit/2/">支付宝存款</a>
+		<a href="/#deposit/3/">微信存款</a>
+	</div>
+	<div class="tab-switch-pages">${CONTENT}</div>
+</div>
+@import 'common/navigator.html'

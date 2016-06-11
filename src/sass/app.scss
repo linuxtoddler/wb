@@ -110,6 +110,26 @@ footer {
 			top: fitPx(6px);
 		}
 	}
+	.select-arrow {
+		position: absolute;
+		right: fitPx(5px);
+		top: fitPx(8px);
+		width: fitPx(63px);
+		height: fitPx(68px);
+		line-height: fitPx(66px);
+		border: 1px solid #cdcad6;
+		border-radius: fitPx(4px);
+		text-align: center;
+		pointer-events: none;
+		&:before {
+			content: "";
+			display: inline-block;
+			border: fitPx(12px) solid transparent;
+			border-top: fitPx(12px) solid #000;
+			vertical-align: middle;
+			margin-top: fitPx(10px);
+		}
+	}
 }
 
 .tips-node {
@@ -125,6 +145,55 @@ footer {
 	}
 	.icon-tips {
 		margin-right: fitPx(17px);
+	}
+}
+
+.progress-node {
+	height: fitPx(112px);
+	text-align: center;
+	display: flex;
+	background: #fff;
+	border-bottom: 1px solid #e5e5e5;
+	.step-node {
+		flex: 1;
+		text-align: center;
+		padding-top: fitPx(17px);
+		color: $textColor;
+		font-size: fitPx(20px);
+		position: relative;
+		&:before, &:after {
+			content: "";
+			top: fitPx(42px);
+			width: calc(50% - #{fitPx(23px)});
+			height: 1px;
+			background: #0099ff;
+			position: absolute;
+		}
+		&:before {
+			left: 0;
+		}
+		&:after {
+			right: 0;
+		}
+		&:first-child:before {
+			display: none;
+		}
+		&:last-child:after {
+			display: none;
+		}
+		&.active .circle {
+			background: #0099ff;
+			color: #fff;
+		}
+	}
+	.circle {
+		width: fitPx(46px);
+		height: fitPx(46px);
+		line-height: fitPx(40px);
+		border: fitPx(3px) solid #0099ff;
+		border-radius: 50%;
+		font-size: fitPx(30px);
+		margin: 0 auto fitPx(15px);
 	}
 }
 
@@ -151,3 +220,6 @@ footer {
 
 // 提款
 @import 'Page.Withdrawals';
+
+// 存款
+@import 'Page.Deposit';

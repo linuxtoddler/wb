@@ -7,7 +7,8 @@
 		'#promo/': 'Promo',
 		'#user/': 'Account',
 		'#addcard/': 'addBankCard',
-		'#withdrawals/': 'Withdrawals'
+		'#withdrawals/': 'Withdrawals',
+		'#deposit/(\\d)/': 'Deposit'
 	},
 	{
 		before: function(hash, dtd) {
@@ -62,5 +63,9 @@
 
 	xjs.router.define('Withdrawals', function() {
 		xjs.createView('Page.Withdrawals');
+	});
+
+	xjs.router.define('Deposit', function(paymentId) {
+		xjs.createView('Page.Deposit', {paymentId: paymentId});
 	});
 })();

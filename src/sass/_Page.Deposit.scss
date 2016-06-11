@@ -1,0 +1,76 @@
+// 存款
+.page-deposit {
+	.contianer {
+		padding: fitPx(16px) fitPx(23px);
+	}
+	.tab-switch-btns {
+		font-size: 0;
+		padding-bottom: fitPx(5px);
+		border-bottom: 1px solid #ccc;
+		a {
+			width: fitPx(184px);
+			height: fitPx(42px);
+			line-height: fitPx(42px);
+			margin-right: fitPx(20px);
+			display: inline-block;
+			vertical-align: top;
+			border-radius: fitPx(4px) fitPx(4px) 0 0;
+			background-color: #ccc;
+			color: #a1a1a1;
+			font-size: fitPx(20px);
+			text-align: center;
+			&:last-child {
+				margin: 0;
+			}
+			&.active {
+				background-color: #0099ff;
+				color: #fff;
+			}
+		}
+	}
+	.input-box {
+		height: fitPx(84px);
+		line-height: fitPx(82px);
+		margin-bottom: fitPx(53px);
+	}
+	.payment-bank {
+		padding-top: fitPx(10px);
+		.address-box {
+			margin-bottom: fitPx(10px);
+			.col-6 {
+				position: relative;
+			}
+		}
+		.promo-choice {
+			.row {
+				margin-bottom: fitPx(27px);
+			}
+			.ui-checkbox {
+				display: inline-block;
+				vertical-align: middle;
+				& + label {
+					color: $textColor;
+					font-size: fitPx(22px);
+					vertical-align: middle;
+					padding-left: fitPx(10px);
+					a {
+						color: #c10000;
+					}
+				}
+			}
+		}
+	}
+	.submit {
+		display: block;
+		width: 100%;
+		height: fitPx(84px);
+		line-height: fitPx(84px);
+		border-radius: fitPx(5px);
+		text-align: center;
+		color: #fff;
+		background: $importantColor;
+		font-size: fitPx(36px);
+		border: none;
+		margin-bottom: fitPx(26px);
+	}
+}

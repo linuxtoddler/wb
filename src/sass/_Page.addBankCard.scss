@@ -14,26 +14,6 @@
 			color: $titleColor;
 			padding-left: fitPx(20px);
 		}
-		.select-arrow {
-			position: absolute;
-			right: fitPx(5px);
-			top: fitPx(8px);
-			width: fitPx(63px);
-			height: fitPx(68px);
-			line-height: fitPx(66px);
-			border: 1px solid #cdcad6;
-			border-radius: fitPx(4px);
-			text-align: center;
-			pointer-events: none;
-			&:before {
-				content: "";
-				display: inline-block;
-				border: fitPx(12px) solid transparent;
-				border-top: fitPx(12px) solid #000;
-				vertical-align: middle;
-				margin-top: fitPx(10px);
-			}
-		}
 		&.disabled {
 			background-color: #ccc;
 			label {

@@ -28,7 +28,7 @@
     };
   };
   Router.prototype.navigator = function(hash, state, replaceHash) {
-    var hash = hash || '#home/';
+    var hash = hash || '#home/',
         activeHash = location.hash,
         result = this.verify(hash),
         dtd = $.Deferred(),
