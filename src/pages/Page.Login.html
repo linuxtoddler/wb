@@ -1,9 +1,9 @@
 <div class="container">
 	<div class="banner"></div>
-	<form class="login-form">
+	<form class="login-form" data-xjs-mixin="plugin.formValidate">
 		<div class="input-box">
 			<label for="username">账号</label>
-			<input type="text" name="loginName" id="username">
+			<input type="text" name="name" id="username">
 		</div>
 		<div class="input-box">
 			<label for="password">密码</label>
@@ -12,11 +12,9 @@
 		<div class="code-node">
 			<div class="input-box">
 				<label for="code">验证码</label>
-				<input type="number" name="code" id="code" autocomplete="off">
+				<input type="text" name="cpt" id="code" autocomplete="off">
 			</div>
-			<div class="code">
-				<img>
-			</div>
+			<img src="api/getcaptcha" class="code" data-xjs-element="codeNode">
 		</div>
 		<input type="submit" class="btn" value="登陆">
 		<a href="#join/" class="btn">免费注册</a>

@@ -1,4 +1,37 @@
 // 免费开户
 .page-register {
-	
+	.container {
+		padding: fitPx(29px) fitPx(22px);
+		.input-box {
+			height: fitPx(82px);
+			line-height: fitPx(82px);
+			margin-bottom: fitPx(50px);
+		}
+		.ui-checkbox {
+			float: left;
+			margin: 0 fitPx(30px) fitPx(60px) 0;
+			& + label {
+				overflow: hidden;
+				font-size: fitPx(20px);
+				color: #666;
+				line-height: fitPx(36px);
+				a {
+					color: #660000;
+				}
+			}
+		}
+		.btn {
+			display: block;
+			width: 100%;
+			height: fitPx(84px);
+			line-height: fitPx(84px);
+			border-radius: fitPx(5px);
+			text-align: center;
+			color: #fff;
+			background: $importantColor;
+			font-size: fitPx(36px);
+			border: none;
+			margin-bottom: fitPx(26px);
+		}
+	}
 }

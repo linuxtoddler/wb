@@ -8,7 +8,7 @@
     baseClass: 'page-login fade in',
     formValidate: {
       input: {
-        userName: {
+        name: {
           error: '请输入账号'
         },
         password: {
@@ -17,7 +17,7 @@
             return xjs.validates.password(val);
           }
         },
-        code: {
+        cpt: {
           error: '请输入验证码',
           check: function(val) {
             return xjs.validates.smscode(val);
@@ -25,20 +25,30 @@
         }
       },
       imgCode: 'codeNode',
-      success: function(obj) {
+      success: function(data) {
         var dtd = $.Deferred();
         xjs.load({
-          url: "member/login.do",
-          type: "POST",
-          data: obj,
+          url: "api/login",
+          data: data,
           skipError: true
         }).then(function(result) {
           if (result.code == '0') {
-            if (xjs.router.state && xjs.router.state.tonewsite) location.href = xjs.router.state.tonewsite;
-            xjs.setUserInfo(true);
-            xjs.router.navigator(xjs.router.state && xjs.router.state.backHash ? xjs.router.state.backHash : '#home/', null, true);
+            xjs.setToken(result.content.token);
+            xjs.load({
+              url: 'api/getmember',
+              data: {
+                token: result.content.token
+              }
+            }).then(function(result) {
+              xjs.setUserInfo(result[0]);
+              if (xjs.router.state && xjs.router.state.tonewsite) location.href = xjs.router.state.tonewsite;
+              xjs.router.navigator(xjs.router.state && xjs.router.state.backHash ? xjs.router.state.backHash : '#home/', null, true);
+            });
           } else {
-            xjs.ui.alert(result.msg);
+            xjs.ui.popup({
+              content: result.message,
+              btns: [{name: '确定'}]
+            });
             dtd.resolve();
           }
         });

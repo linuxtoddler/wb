@@ -12,6 +12,18 @@
     user = data;
   };
 
+  xjs.setToken = function(token) {
+    localStorage.wbToken = token;
+  }
+
+  xjs.getToken = function() {
+    return localStorage.wbToken || false;
+  }
+
+  xjs.cleanToken = function() {
+    delete localStorage.wbToken;
+  }
+
   // 渲染默认组建
   function createUI() {
     return {
@@ -23,25 +35,25 @@
 
   // 检查用户是否登陆并更新登陆信息
   function updateUserInfo() {
-    // xjs.load({
-    //   url: 'member/isLogin.do',
-    //   type: 'POST',
-    //   offAnimate: true,
-    // }).then(function(result) {
-    //   if (result.isLogin) {
-    //     xjs.load({
-    //       url: 'member/getUserInfo.do',
-    //       type: 'POST',
-    //       offAnimate: true
-    //     }).then(function(data) {
-    //       xjs.setUserInfo(data);
-    //       xjs.router.start();
-    //     });
-    //   } else {
-    //     xjs.router.start();
-    //   }
-    // });
-    xjs.router.start();
+    if (xjs.getToken()) {
+      xjs.load({
+        url: 'api/getmember',
+        offAnimate: true,
+        skipError: true,
+        data: {
+          token: xjs.getToken()
+        }
+      }).then(function(result) {
+        if (result.code == "0") {
+          xjs.setUserInfo(result.content[0]);
+        } else {
+          xjs.cleanToken();
+        }
+        xjs.router.start();
+      });
+    } else {
+      xjs.router.start();
+    }
   }
 
   // 监听路由改变

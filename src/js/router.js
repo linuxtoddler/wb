@@ -53,19 +53,19 @@
 		xjs.createView('Page.Promo');
 	});
 
-	xjs.router.define('Account', function() {
+	xjs.router.define('Account', true, function() {
 		xjs.createView('Page.Account');
 	});
 
-	xjs.router.define('addBankCard', function() {
+	xjs.router.define('addBankCard', true, function() {
 		xjs.createView('Page.addBankCard');
 	});
 
-	xjs.router.define('Withdrawals', function() {
+	xjs.router.define('Withdrawals', true, function() {
 		xjs.createView('Page.Withdrawals');
 	});
 
-	xjs.router.define('Deposit', function(paymentId) {
+	xjs.router.define('Deposit', true, function(paymentId) {
 		xjs.createView('Page.Deposit', {paymentId: paymentId});
 	});
 })();

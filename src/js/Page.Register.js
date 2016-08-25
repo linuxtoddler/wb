@@ -3,7 +3,7 @@
       base = xjs.getDeclare('ui.Widget');
 
   declare('Page.Register', [base], {
-    title: 'Xbet.com - 世界老虎机游戏先驱',
+    title: '免费注册',
     templateString: __include('pages/Page.Register.html'),
     baseClass: 'page-register fade in',
     startup: function() {

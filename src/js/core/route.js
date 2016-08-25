@@ -37,7 +37,7 @@
       return this.callback.fail();
     } else {
       var matchResult = result.matchResult.slice(1);
-      if (result.route.authorize && !xjs.getUserInfo()) {
+      if (result.route.authorize && !xjs.getToken()) {
         state.backHash = hash;
         replaceHash = false;
         result = this.verify(hash = '#login/');

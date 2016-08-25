@@ -123,7 +123,7 @@
       xjs.hitch(this, cb)(wrong);
     },
     changeCode: function(e) {
-      e.target.src = "getCode.do?random=" + Math.random();
+      e.target.src = "api/getcaptcha?" + Math.random();
     }
   });
 

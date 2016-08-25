@@ -93,7 +93,7 @@
       },
       smscode: function(s) {
         s = xjs.$.trim(s);
-        return s && /^\d{4}$/i.test(s);
+        return s && /^\w{4,6}$/i.test(s);
       },
       cncheck: function(s) {
         s = xjs.$.trim(s);

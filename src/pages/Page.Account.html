@@ -1,7 +1,8 @@
 @import 'common/header.html'
 <div class="banner-node">
-	<p>会员账号： wendy1988121215</p>
-	<p>账号余额： <span class="money">0.00元</span>积分： <span class="point">0分</span></p>
+	<% var user = xjs.getUserInfo(); %>
+	<p>会员账号： <%-user.loginname%></p>
+	<p>账号余额： <span class="money"><%-user.money%>元</span>积分： <span class="point"><%-user.credit%>分</span></p>
 </div>
 @import 'common/tips.html'
 <div class="container">
