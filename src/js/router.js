@@ -1,14 +1,15 @@
 (function() {
 	// 使用正则表达式时类似\w的要改成\\w
 	xjs.router.setup({
-		'#home/': 'Home',
-		'#login/': 'Login',
-		'#join/': 'Register',
-		'#promo/': 'Promo',
-		'#user/': 'Account',
-		'#addcard/': 'addBankCard',
-		'#withdrawals/': 'Withdrawals',
-		'#deposit/(\\d)/': 'Deposit'
+		'#home/': 'Home', //首页
+		'#login/': 'Login', //登陆
+		'#join/': 'Register', //注册
+		'#promo/': 'Promo', //优惠活动
+		'#user/': 'Account', //个人中心
+		'#addcard/': 'addBankCard', //绑定银行卡
+		'#withdrawals/': 'Withdrawals', //提款
+		'#deposit/(\\d)/': 'Deposit', //存款
+		'#tranfers/': 'Tranfers'
 	},
 	{
 		before: function(hash, dtd) {
@@ -53,19 +54,23 @@
 		xjs.createView('Page.Promo');
 	});
 
-	xjs.router.define('Account', true, function() {
+	xjs.router.define('Account', function() {
 		xjs.createView('Page.Account');
 	});
 
-	xjs.router.define('addBankCard', true, function() {
+	xjs.router.define('addBankCard', function() {
 		xjs.createView('Page.addBankCard');
 	});
 
-	xjs.router.define('Withdrawals', true, function() {
+	xjs.router.define('Withdrawals', function() {
 		xjs.createView('Page.Withdrawals');
 	});
 
-	xjs.router.define('Deposit', true, function(paymentId) {
+	xjs.router.define('Deposit', function(paymentId) {
 		xjs.createView('Page.Deposit', {paymentId: paymentId});
+	});
+
+	xjs.router.define('Tranfers', function() {
+		xjs.createView('Page.Tranfers');
 	});
 })();

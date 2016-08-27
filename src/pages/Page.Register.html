@@ -1,25 +1,28 @@
 @import 'common/header.html'
 @import 'common/tips.html'
 <div class="container">
-	<form class="login-form">
+	<form class="login-form" data-xjs-mixin="plugin.formValidate">
 		<div class="input-box">
-			<input type="text" name="name" id="username" placeholder="会员账号">
+			<input type="text" name="username" id="username" placeholder="会员账号">
 		</div>
 		<div class="input-box">
 			<input type="password" name="password" id="password" placeholder="登陆密码">
 		</div>
 		<div class="input-box">
-			<input type="password" name="password" id="password" placeholder="再次确认密码">
+			<input type="password" name="repassword" id="repassword" placeholder="再次确认密码">
 		</div>
 		<div class="input-box">
-			<input type="text" name="TelNo" id="TelNo" placeholder="手机号码">
+			<input type="text" name="realname" id="realName" placeholder="您的真实姓名">
 		</div>
 		<div class="input-box">
-			<input type="text" name="wechat" id="wechat" placeholder="微信号">
+			<input type="text" name="phone" id="TelNo" placeholder="手机号码">
+		</div>
+		<div class="input-box">
+			<input type="text" name="weixin" id="wechat" placeholder="微信号">
 		</div>
 		<div class="row">
 			<div class="ui-checkbox">
-				<input type="checkbox" id="agreement">
+				<input type="checkbox" name="agreement" id="agreement">
 				<label for="agreement"></label>
 			</div>
 			<label for="agreement">点击“<a href="">立即注册</a>”，即表示您已阅读并同意万博娱乐城《服务条款》和《隐私政策》。</label>

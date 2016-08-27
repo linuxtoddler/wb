@@ -5,19 +5,15 @@
   declare('Page.Deposit', [base], {
     title: '我要存款',
     templateString: __include('pages/Page.Deposit.html'),
-    _paymentBankTpl: __include('pages/Page.PaymentBank.html'),
     baseClass: 'page-deposit fade in',
-    buildRender: function() {
-    	var tpl = this.templateString;
+    startup: function() {
     	if (this.paymentId == 1) {
-    		tpl = tpl.replace('${CONTENT}', this._paymentBankTpl);
+        xjs.createView('Page.submitPaymentOrder', {}, this.containerNode);
     	} else if (this.paymentId == 2) {
-    		tpl = tpl.replace('${CONTENT}', this._paymentAlipayTpl);
+        xjs.createView('Page.submitAlipayOrder', {}, this.containerNode);
     	} else {
-    		tpl = tpl.replace('${CONTENT}', this._paymentWechatTpl);
+        xjs.createView('Page.submitWechatPayOrder', {}, this.containerNode);
     	}
-    	this.templateString = tpl;
-    	this._super();
     }
   });
 })(xjs);

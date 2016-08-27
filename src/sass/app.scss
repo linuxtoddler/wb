@@ -161,6 +161,7 @@ footer {
 		color: $textColor;
 		font-size: fitPx(20px);
 		position: relative;
+		white-space: nowrap;
 		&:before, &:after {
 			content: "";
 			top: fitPx(42px);
@@ -223,3 +224,6 @@ footer {
 
 // 存款
 @import 'Page.Deposit';
+
+// 游戏转账
+@import 'Page.Tranfers';

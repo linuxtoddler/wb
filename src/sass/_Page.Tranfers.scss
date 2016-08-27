@@ -1,0 +1,46 @@
+// 游戏转账
+.page-tranfers {
+	.contianer {
+		padding: fitPx(24px) fitPx(23px) 0;
+		overflow: hidden;
+		.input-box {
+			height: fitPx(84px);
+			line-height: fitPx(82px);
+			margin-bottom: fitPx(34px);
+			position: relative;
+		}
+		.ui-slidemenu {
+			width: fitPx(63px);
+			height: fitPx(66px);
+			border: 2px solid #dfdfdf;
+			position: absolute;
+			right: fitPx(5px);
+			top: 50%;
+			transform: translateY(-50%);
+			text-align: center;
+			&:before {
+				content: "";
+				position: relative;
+				display: inline-block;
+				vertical-align: top;
+				border: fitPx(16px) solid transparent;
+				border-top-color: #000;
+				top: 50%;
+				transform: translateY(-#{fitPx(6px)});
+			}
+		}
+	}
+	.submit {
+		display: block;
+		width: 100%;
+		height: fitPx(84px);
+		border: none;
+		border-radius: fitPx(4px);
+		text-align: center;
+		font-size: fitPx(30px);
+		float: right;
+		background: $importantColor;
+		color: #fff;
+		margin: fitPx(82px) 0;
+	}
+}
