@@ -1,0 +1,40 @@
+@import 'common/header.html'
+<div class="banner-node">
+	<% var user = xjs.getUserInfo(); %>
+	<p>会员账号： <%-user.loginname%></p>
+	<p>账号余额： <span class="money"><%-user.money%>元</span>积分： <span class="point"><%-user.credit%>分</span></p>
+</div>
+@import 'common/tips.html'
+<div class="container">
+	<a href="" class="guide-link">
+		<div class="pos left"><i class="icon icon-star"></i></div>
+		个人资料
+		<div class="pos right"><i class="icon icon-arrow-green"></i></div>
+	</a>
+	<a href="#deposit/1/" class="guide-link">
+		<div class="pos left"><i class="icon icon-star"></i></div>
+		我要存款
+		<div class="pos right"><i class="icon icon-arrow-green"></i></div>
+	</a>
+	<a href="#withdrawals/" class="guide-link">
+		<div class="pos left"><i class="icon icon-star"></i></div>
+		我要提款
+		<div class="pos right"><i class="icon icon-arrow-green"></i></div>
+	</a>
+	<a href="#tranfers/" class="guide-link">
+		<div class="pos left"><i class="icon icon-star"></i></div>
+		户内转账
+		<div class="pos right"><i class="icon icon-arrow-green"></i></div>
+	</a>
+	<a href="#addcard/" class="guide-link">
+		<div class="pos left"><i class="icon icon-star"></i></div>
+		绑定银行卡
+		<div class="pos right"><i class="icon icon-arrow-green"></i></div>
+	</a>
+	<a href="" class="guide-link">
+		<div class="pos left"><i class="icon icon-star"></i></div>
+		返回电脑板
+		<div class="pos right"><i class="icon icon-arrow-green"></i></div>
+	</a>
+</div>
+@import 'common/navigator.html'

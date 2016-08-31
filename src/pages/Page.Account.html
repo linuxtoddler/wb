@@ -1,40 +1,44 @@
 @import 'common/header.html'
-<div class="banner-node">
-	<% var user = xjs.getUserInfo(); %>
-	<p>会员账号： <%-user.loginname%></p>
-	<p>账号余额： <span class="money"><%-user.money%>元</span>积分： <span class="point"><%-user.credit%>分</span></p>
-</div>
 @import 'common/tips.html'
 <div class="container">
-	<a href="" class="guide-link">
-		<div class="pos left"><i class="icon icon-star"></i></div>
-		个人资料
-		<div class="pos right"><i class="icon icon-arrow-green"></i></div>
-	</a>
-	<a href="" class="guide-link">
-		<div class="pos left"><i class="icon icon-star"></i></div>
-		我要存款
-		<div class="pos right"><i class="icon icon-arrow-green"></i></div>
-	</a>
-	<a href="#withdrawals/" class="guide-link">
-		<div class="pos left"><i class="icon icon-star"></i></div>
-		我要提款
-		<div class="pos right"><i class="icon icon-arrow-green"></i></div>
-	</a>
-	<a href="" class="guide-link">
-		<div class="pos left"><i class="icon icon-star"></i></div>
-		户内转账
-		<div class="pos right"><i class="icon icon-arrow-green"></i></div>
-	</a>
-	<a href="" class="guide-link">
-		<div class="pos left"><i class="icon icon-star"></i></div>
-		绑定银行卡
-		<div class="pos right"><i class="icon icon-arrow-green"></i></div>
-	</a>
-	<a href="" class="guide-link">
-		<div class="pos left"><i class="icon icon-star"></i></div>
-		返回电脑板
-		<div class="pos right"><i class="icon icon-arrow-green"></i></div>
-	</a>
+	<% var user = xjs.getUserInfo(); %>
+	<div class="input-box">
+		<label for="realname">真实姓名：</label>
+		<input type="text" name="realname" id="realname" value="<%-user.bankname%>" disabled>
+	</div>
+	<div class="input-box">
+		<label for="username">会员账号：</label>
+		<input type="text" name="username" value="<%-user.loginname%>" id="username">
+	</div>
+	<div class="input-box">
+		<label for="mobile">手机号：</label>
+		<input type="text" name="mobile" value="<%-user.phone%>" id="mobile">
+		<div class="menu"><span>修改</span></div>
+	</div>
+	<div class="input-box">
+		<label for="wechat">微信号：</label>
+		<input type="text" name="wechat" value="<%-user.weixin%>" id="wechat">
+		<div class="menu"><span>修改</span></div>
+	</div>
+	<div class="input-box">
+		<label for="qq">QQ号码：</label>
+		<input type="text" name="qq" value="<%-user.qq%>" id="qq">
+		<div class="menu"><span>修改</span></div>
+	</div>
+	<div class="input-box">
+		<label for="email">邮箱：</label>
+		<input type="text" name="email" value="<%-user.email%>" id="email">
+		<div class="menu"><span>修改</span></div>
+	</div>
+	<div class="input-box">
+		<label for="tranfersPassword">交易口令：</label>
+		<input type="password" name="tranfersPassword" id="tranfersPassword">
+		<div class="menu"><span>修改</span></div>
+	</div>
+	<div class="input-box">
+		<label for="password">登陆密码：</label>
+		<input type="password" name="password" id="password">
+		<div class="menu"><span>修改</span></div>
+	</div>
 </div>
 @import 'common/navigator.html'

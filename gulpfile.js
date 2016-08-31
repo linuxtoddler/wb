@@ -230,7 +230,7 @@ gulp.task('server', function() {
   browserSync.init({
     ui: false
     , port: 81
-    , proxy: "localhost:6000"
+    , proxy: "localhost:5000"
   });
   gulp.watch(src + 'sass/*.scss').on('change', function() {
     sequence('sass', reload);

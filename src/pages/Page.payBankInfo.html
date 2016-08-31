@@ -1,0 +1,54 @@
+@import 'common/header.html'
+@import 'common/tips.html'
+<div class="progress-node">
+	<div class="step-node">
+		<div class="circle">1</div>
+		填写汇款单
+	</div>
+	<div class="step-node active">
+		<div class="circle">2</div>
+		获取万博指导账号
+	</div>
+	<div class="step-node">
+		<div class="circle">3</div>
+		进行汇款操作
+	</div>
+	<div class="step-node">
+		<div class="circle">4</div>
+		等待存款到账
+	</div>
+</div>
+<div class="contianer">
+	<div class="tab-switch-btns">
+		<a href="/#paybank/" class="active">万博收款银行卡</a>
+	</div>
+	<div class="tab-switch-pages" data-xjs-element="containerNode">
+		<form class="payment-bank">
+			<section>
+				<div class="input-box">
+					<label for="username">收款银行：</label>
+					<input type="text" id="username" value="建设银行" disabled>
+				</div>
+				<div class="input-box">
+					<label for="bankNum">开户行：</label>
+					<input type="text" id="bankNum" value="保定试试行" disabled>
+				</div>
+				<div class="input-box">
+					<label for="money">收款账号：</label>
+					<input type="number" id="money" value="16647812647812364" disabled>
+				</div>
+				<div class="input-box">
+					<label for="money">收款人：</label>
+					<input type="text" id="money" value="马双喜" disabled>
+				</div>
+			</section>
+			<div class="input-box">
+				<label for="money">汇款留言：</label>
+				<input type="text" id="money">
+			</div>
+			<input type="submit" class="submit" value="我已汇款">
+			<input type="submit" class="submit" value="取消订单">
+		</form>
+	</div>
+</div>
+@import 'common/navigator.html'

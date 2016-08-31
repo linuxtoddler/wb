@@ -5,11 +5,13 @@
 		'#login/': 'Login', //登陆
 		'#join/': 'Register', //注册
 		'#promo/': 'Promo', //优惠活动
-		'#user/': 'Account', //个人中心
+		'#user/': 'userCenter', //用户中心
+		'#account/': 'Account', //个人资料
 		'#addcard/': 'addBankCard', //绑定银行卡
 		'#withdrawals/': 'Withdrawals', //提款
 		'#deposit/(\\d)/': 'Deposit', //存款
-		'#tranfers/': 'Tranfers'
+		'#tranfers/': 'Tranfers', //游戏转账
+		'#paybank/': 'PayBank' //获取充值银行账户
 	},
 	{
 		before: function(hash, dtd) {
@@ -54,23 +56,31 @@
 		xjs.createView('Page.Promo');
 	});
 
-	xjs.router.define('Account', function() {
+	xjs.router.define('userCenter', true, function() {
+		xjs.createView('Page.userCenter');
+	});
+
+	xjs.router.define('Account', true, function() {
 		xjs.createView('Page.Account');
 	});
 
-	xjs.router.define('addBankCard', function() {
+	xjs.router.define('addBankCard', true,function() {
 		xjs.createView('Page.addBankCard');
 	});
 
-	xjs.router.define('Withdrawals', function() {
+	xjs.router.define('Withdrawals', true,function() {
 		xjs.createView('Page.Withdrawals');
 	});
 
-	xjs.router.define('Deposit', function(paymentId) {
+	xjs.router.define('Deposit', true,function(paymentId) {
 		xjs.createView('Page.Deposit', {paymentId: paymentId});
 	});
 
-	xjs.router.define('Tranfers', function() {
+	xjs.router.define('Tranfers', true,function() {
 		xjs.createView('Page.Tranfers');
+	});
+
+	xjs.router.define('PayBank', true,function() {
+		xjs.createView('Page.payBankInfo');
 	});
 })();

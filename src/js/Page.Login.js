@@ -36,6 +36,7 @@
             xjs.setToken(result.content.token);
             xjs.load({
               url: 'api/getmember',
+              type: 'GET',
               data: {
                 token: result.content.token
               }
@@ -46,7 +47,7 @@
             });
           } else {
             xjs.ui.popup({
-              content: result.message,
+              content: result.msg,
               btns: [{name: '确定'}]
             });
             dtd.resolve();

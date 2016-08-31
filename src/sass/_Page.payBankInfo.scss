@@ -1,0 +1,23 @@
+// 获取收款账号
+.page-paybankinfo {
+	.input-box {
+		border: none;
+		label {
+			text-align: right;
+			width: fitPx(160px);
+		}
+		input:disabled {
+			background: none;
+		}
+		input {
+			padding-left: fitPx(180px);
+			color: #9966cc;
+			font-size: fitPx(24px);
+		}
+	}
+	section {
+		.input-box {
+			margin: 0;
+		}
+	}
+}

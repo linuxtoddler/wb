@@ -7,11 +7,11 @@
     templateString: __include('pages/Page.Deposit.html'),
     baseClass: 'page-deposit fade in',
     startup: function() {
-    	if (this.paymentId == 1) {
+    	if (this.paymentId == 1) { //手动存款
         xjs.createView('Page.submitPaymentOrder', {}, this.containerNode);
-    	} else if (this.paymentId == 2) {
+    	} else if (this.paymentId == 2) { //支付宝充值
         xjs.createView('Page.submitAlipayOrder', {}, this.containerNode);
-    	} else {
+    	} else if (this.paymentId == 3) { //微信充值
         xjs.createView('Page.submitWechatPayOrder', {}, this.containerNode);
     	}
     }

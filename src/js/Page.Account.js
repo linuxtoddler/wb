@@ -3,7 +3,7 @@
       base = xjs.getDeclare('ui.Widget');
 
   declare('Page.Account', [base], {
-    title: '用户中心',
+    title: '个人资料',
     templateString: __include('pages/Page.Account.html'),
     baseClass: 'page-account fade in'
   });

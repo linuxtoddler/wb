@@ -1,0 +1,51 @@
+// 账户中心
+.page-usercenter {
+	.banner-node {
+		background: #000;
+		height: fitPx(240px);
+		text-align: center;
+		padding-top: fitPx(82px);
+		color: #fff;
+		line-height: 100%;
+		font-size: fitPx(22px);
+		p {
+			margin-bottom: fitPx(34px);
+		}
+		.money {
+			color: #ff3300;
+			margin-right: fitPx(20px);
+		}
+		.point {
+			color: #ffff00;
+		}
+	}
+	.container {
+		padding: fitPx(30px) fitPx(23px) 0;
+	}
+	.guide-link {
+		position: relative;
+		display: block;
+		height: fitPx(84px);
+		line-height: fitPx(82px);
+		margin-bottom: fitPx(19px);
+		background: #fefdfd;
+		border-radius: fitPx(4px);
+		border: 1px solid #d2d0d8;
+		font-size: fitPx(30px);
+		color: $textColor;
+		text-align: center;
+		.pos {
+			position: absolute;
+			top: 0;
+			line-height: 0;
+			&.left {
+				left: 0;
+				padding: fitPx(10px) 0 0 fitPx(20px);
+			}
+			&.right {
+				right: 0;
+				padding: fitPx(28px) fitPx(35px) 0 0;
+			}
+		}
+	}
+}

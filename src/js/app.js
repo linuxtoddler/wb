@@ -40,6 +40,7 @@
         url: 'api/getmember',
         offAnimate: true,
         skipError: true,
+        type: 'GET',
         data: {
           token: xjs.getToken()
         }

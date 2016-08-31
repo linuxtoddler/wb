@@ -91,8 +91,8 @@ footer {
 		top: 0;
 		line-height: inherit;
 		padding-left: fitPx(20px);
-		& + input {
-			padding-left: fitPx(140px) !important;
+		& + input:not([type="submit"]) {
+			padding-left: fitPx(140px);
 		}
 	}
 	select + .arrow, input[type="date"] + .arrow	{
@@ -214,6 +214,9 @@ footer {
 @import 'Page.Promo';
 
 // 账户中心
+@import 'Page.userCenter';
+
+// 个人资料
 @import 'Page.Account';
 
 // 绑定银行卡
@@ -224,6 +227,9 @@ footer {
 
 // 存款
 @import 'Page.Deposit';
+
+// 获取收款账号
+@import 'Page.payBankInfo';
 
 // 游戏转账
 @import 'Page.Tranfers';
