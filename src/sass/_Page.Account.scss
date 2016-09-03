@@ -7,6 +7,11 @@
 			line-height: fitPx(82px);
 			margin-bottom: fitPx(10px);
 			position: relative;
+			label {
+				text-align: right;
+				width: fitPx(160px);
+				text-align-last: justify;
+			}
 			input:disabled {
 				background: #ccc;
 			}
@@ -22,6 +27,38 @@
 			font-size: fitPx(30px);
 			color: #0099ff;
 			text-decoration: underline;
+		}
+	}
+}
+
+.page-account-dialog {
+	.ui-popup-body {
+		width: fitPx(599px);
+	}
+	form {
+		position: relative;
+	}
+	.input-box {
+		height: fitPx(82px);
+		line-height: fitPx(82px);
+		border: 1px solid #d1d0d0;
+		input {
+			padding-left: fitPx(16px);
+		}
+	}
+	.code-node {
+		overflow: hidden;
+		.input-box {
+			margin: 0 fitPx(11px) fitPx(40px) 0;
+			width: fitPx(327px);
+			float: left;
+		}
+		button {
+			width: fitPx(183px);
+			height: fitPx(82px);
+			background: #fff;
+			border: 1px solid #d1d0d0;
+			font-size: fitPx(29px);
 		}
 	}
 }

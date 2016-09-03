@@ -165,7 +165,7 @@
     },
     WechatService: function() {
       xjs.ui.popup({
-        content: '<img src="/assets/images/wechat-qrcode.jpg"><br>请扫描并关注xbet的微信公众账号',
+        content: '<img src="/assets/images/wechat-qrcode.jpg"><br>请扫描并关注万博的微信公众账号',
         btns: [{name: '关闭'}]
       });
     },

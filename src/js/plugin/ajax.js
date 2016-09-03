@@ -11,14 +11,28 @@
     var skipError = param.skipError;
     var offAnimate = param.offAnimate;
     var showShadow = param.showShadow;
+    var refreshToken = param.refreshToken;
     if (xjs.ui && !offAnimate) xjs.ui.loading.show(showShadow);
 
     delete param.skipError;
     delete param.offAnimate;
     delete param.showShadow;
+    delete param.refreshToken;
+
+    if (refreshToken) {
+      if (param.data) {
+        param.data.token = xjs.getToken();
+      } else {
+        param.data = {token: xjs.getToken()};
+      }
+    }
+
     var wait = function() {
       var dtd = $.Deferred();
-      $.ajax(param).then(function(result) {
+      $.ajax(param).then(function(result, status, xhr) {
+        if (refreshToken) {
+          xjs.setToken(xhr.getResponseHeader("Authorization"));
+        }
         if (result.code != '0' && !skipError) return dtd.reject(result.code, result.msg);
         dtd.resolve( skipError ? result : result.content );
         if (xjs.ui && !offAnimate) xjs.ui.loading.hide();
@@ -48,11 +62,16 @@
       if (xjs.ui && !offAnimate) xjs.ui.loading.hide();
       if (code == '3') { //如果用户未登录
         return setTimeout(function() {
-          location.hash = '#login/';
-          location.reload();
+          xjs.cleanToken();
+          xjs.router.navigator('#login/', {backHash: location.hash}, true);
         }, 200);
       }
-      xjs.ui.alert(error);
+      xjs.ui.popup({
+        content: error,
+        btns: [{
+          name: '确定'
+        }]
+      });
     });
   };
 })();

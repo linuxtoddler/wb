@@ -5,7 +5,6 @@
   declare('ui.Popup', [base], {
     applyTpl: __include('pages/common/popup.html'),
     baseClass: 'ui-popup',
-    keepInside: true, //当页面切换时不会删除当前模块
     show: function() {
       this.$domNode.addClass('fadein');
     },
@@ -32,6 +31,7 @@
         return function(param) {
           var tpl = that.applyTpl;
           that.setParam(param.btns);
+          tpl = tpl.replace('${TITLE}', param.title ? '<p>' + param.title + '</p>' : '');
           tpl = tpl.replace('${CONTENT}', param.content);
           if (param.btns) {
             tpl = tpl.replace('${BUTTON}', function() {

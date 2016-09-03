@@ -92,7 +92,7 @@ footer {
 		line-height: inherit;
 		padding-left: fitPx(20px);
 		& + input:not([type="submit"]) {
-			padding-left: fitPx(140px);
+			padding-left: fitPx(160px);
 		}
 	}
 	select + .arrow, input[type="date"] + .arrow	{

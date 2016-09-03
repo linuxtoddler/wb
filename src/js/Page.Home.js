@@ -3,7 +3,7 @@
       base = xjs.getDeclare('ui.Widget');
 
   declare('Page.Home', [base], {
-    title: 'Xbet.com - 世界老虎机游戏先驱',
+    title: '万博 - 世界老虎机游戏先驱',
     templateString: __include('pages/Page.Home.html'),
     baseClass: 'page-home fade in',
     startup: function() {

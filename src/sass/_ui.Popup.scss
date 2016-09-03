@@ -28,6 +28,17 @@
 		overflow: hidden;
 		position: relative;
 	}
+	.ui-popup-title {
+		p {
+			height: fitPx(52px);
+			line-height: fitPx(52px);
+			background: #0972c5;
+			font-size: fitPx(30px);
+			text-align: left;
+			color: #fff;
+			padding-left: fitPx(37px);
+		}
+	}
 	.ui-popup-content {
 		padding: fitPx(37px);
 		color: #000;

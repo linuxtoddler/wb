@@ -31,6 +31,21 @@ var env = 'local';
 var baseSize = 40; //网页基准像素单位
 var revStatus;
 
+var includeTpl = function() {
+  return through2.obj(function(file, enc, cb) {
+    var filePath = path.dirname(file.path);
+    var content = file.contents.toString();
+    // 导入HTML
+    content = content.replace(/__include\('(.*)'\)/g, function(str, src) {
+      src = dest + src;
+      return fs.existsSync(src) ? "'" + fs.readFileSync(src).toString().replace(/\s{2,}/g, '') + "'" : 'undefined';
+    });
+    file.contents = new Buffer(content);
+    this.push(file);
+    cb();
+  });
+}
+
 gulp.task('clean:dev', function() {
   return gulp.src(dest, {read: false})
     .pipe(clean());
@@ -45,6 +60,7 @@ gulp.task('concat:lib', function() {
       filePath + 'plugin/{tool,*}.js'
     ])
     .pipe(concat('lib.js'))
+    .pipe(includeTpl())
     .pipe(gulpIf(revStatus, revReplace({manifest: manifest})))
     .pipe(gulpIf(revStatus, rev()))
     .pipe(gulp.dest(dest + 'assets/js/'))
@@ -57,24 +73,12 @@ gulp.task('concat:lib', function() {
 
 gulp.task('concat:app', function() {
   var manifest = gulp.src("rev-manifest.json");
-  var includeTpl = through2.obj(function(file, enc, cb) {
-      var filePath = path.dirname(file.path);
-      var content = file.contents.toString();
-      // 导入HTML
-      content = content.replace(/__include\('(.*)'\)/g, function(str, src) {
-        src = dest + src;
-        return fs.existsSync(src) ? "'" + fs.readFileSync(src).toString().replace(/\s{2,}/g, '') + "'" : 'undefined';
-      });
-      file.contents = new Buffer(content);
-      this.push(file);
-      cb();
-  });
   return gulp.src([
       src + 'js/app.js',
       src + 'js/*.js'
     ])
     .pipe(concat('app.js'))
-    .pipe(includeTpl)
+    .pipe(includeTpl())
     .pipe(gulpIf(revStatus, revReplace({manifest: manifest})))
     .pipe(gulpIf(revStatus, rev()))
     .pipe(gulp.dest(dest + 'assets/js/'))
@@ -256,12 +260,11 @@ gulp.task('server', function() {
 });
 
 gulp.task('default', function() {
-  // sequence('clean:dev', 'imagemin', ['build:html', 'sprites', 'sass', 'json'], ['concat:lib', 'concat:app'], 'build:index', 'server');
   sequence('clean:dev', 'imagemin', ['build:html', 'sass', 'json'], ['concat:lib', 'concat:app'], 'build:index', 'server');
 });
 
 gulp.task('release', function() {
   revStatus = true;
-  sequence('clean:dev', 'imagemin', ['build:html', 'sass', 'json'], ['concat:lib', 'concat:app'], 'uglify', 'build:index', 'clean:surplus');
+  // sequence('clean:dev', 'imagemin', ['build:html', 'sass', 'json'], ['concat:lib', 'concat:app'], 'uglify', 'build:index', 'clean:surplus');
   sequence('clean:dev', 'imagemin', ['build:html', 'sprites', 'sass', 'json'], ['concat:lib', 'concat:app'], 'uglify', 'build:index', 'clean:surplus');
 });

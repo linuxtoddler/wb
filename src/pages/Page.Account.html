@@ -8,37 +8,37 @@
 	</div>
 	<div class="input-box">
 		<label for="username">会员账号：</label>
-		<input type="text" name="username" value="<%-user.loginname%>" id="username">
+		<input type="text" name="username" value="<%-user.loginname%>" id="username" readonly="true">
 	</div>
 	<div class="input-box">
 		<label for="mobile">手机号：</label>
-		<input type="text" name="mobile" value="<%-user.phone%>" id="mobile">
-		<div class="menu"><span>修改</span></div>
+		<input type="text" name="mobile" value="<%-user.phone%>" id="mobile" readonly="true" data-xjs-element="phoneNode">
+		<div class="menu"><span data-xjs-event="tap: changeMobile;">修改</span></div>
 	</div>
 	<div class="input-box">
 		<label for="wechat">微信号：</label>
-		<input type="text" name="wechat" value="<%-user.weixin%>" id="wechat">
-		<div class="menu"><span>修改</span></div>
+		<input type="text" name="wechat" value="<%-user.weixin%>" id="wechat" readonly="true" data-xjs-element="wechatNode">
+		<div class="menu"><span data-xjs-event="tap: changeWechat;">修改</span></div>
 	</div>
 	<div class="input-box">
 		<label for="qq">QQ号码：</label>
-		<input type="text" name="qq" value="<%-user.qq%>" id="qq">
-		<div class="menu"><span>修改</span></div>
+		<input type="text" name="qq" value="<%-user.qq%>" id="qq" readonly="true" data-xjs-element="qqNode">
+		<div class="menu"><span data-xjs-event="tap: changeQQ;">修改</span></div>
 	</div>
 	<div class="input-box">
 		<label for="email">邮箱：</label>
-		<input type="text" name="email" value="<%-user.email%>" id="email">
-		<div class="menu"><span>修改</span></div>
+		<input type="text" name="email" value="<%-user.email%>" id="email" readonly="true" data-xjs-element="emailNode">
+		<div class="menu"><span data-xjs-event="tap: changeEmail;">修改</span></div>
 	</div>
 	<div class="input-box">
-		<label for="tranfersPassword">交易口令：</label>
-		<input type="password" name="tranfersPassword" id="tranfersPassword">
-		<div class="menu"><span>修改</span></div>
+		<label for="secret">交易口令：</label>
+		<input type="password" name="secret" id="secret" readonly="true" data-xjs-element="secretNode">
+		<div class="menu"><span data-xjs-event="tap: changeSecret;">修改</span></div>
 	</div>
 	<div class="input-box">
 		<label for="password">登陆密码：</label>
-		<input type="password" name="password" id="password">
-		<div class="menu"><span>修改</span></div>
+		<input type="password" name="password" id="password" readonly="true" data-xjs-element="passwordNode">
+		<div class="menu"><span data-xjs-event="tap: changePassword;">修改</span></div>
 	</div>
 </div>
 @import 'common/navigator.html'

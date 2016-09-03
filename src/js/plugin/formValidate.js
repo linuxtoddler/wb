@@ -71,7 +71,11 @@
       this.$domNode.append(popupFrag);
     },
     openPopup: function(dom, param) {
-      var offset = dom.offset();
+      var parent = dom.parent();
+      var offset = {
+        left: parent.get(0).offsetLeft,
+        top: parent.get(0).offsetTop
+      };
       var popup = $(param.popup);
       var height = popup.width(dom.width()).html('<p><span>' + param.error + '</span></p>').height();
       this.scrollTo(offset.top - height - 100);

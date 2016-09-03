@@ -27,7 +27,7 @@
   // 渲染默认组建
   function createUI() {
     return {
-      popup: xjs.createView('ui.Popup').update('popup'),
+      popup: xjs.createView('ui.Popup', {keepInside: true}).update('popup'),
       alert: xjs.createView('ui.Popup').update('alert'),
       loading: xjs.createView('ui.Loading', null, '#ui-loading')
     };
@@ -41,9 +41,7 @@
         offAnimate: true,
         skipError: true,
         type: 'GET',
-        data: {
-          token: xjs.getToken()
-        }
+        refreshToken: true
       }).then(function(result) {
         if (result.code == "0") {
           xjs.setUserInfo(result.content[0]);
@@ -66,8 +64,6 @@
         event.preventDefault();
         if(location.hash != '#' + href.hash) {
           xjs.router.navigator('#' + href.hash);
-        } else {
-          xjs.ui.sideBar.out();
         }
       }
     });

@@ -15,8 +15,12 @@
     return xjs.getDeclare(name, param || {}, wrapper);
   };
 
-  xjs.destroyView = function() {
+  xjs.destroyView = function(classId) {
     if (!Object.getOwnPropertyNames(_examples).length) return;
+    if (classId) {
+        _examples[classId].$domNode.off().remove();
+      return delete _examples[classId];
+    }
     // $(content).unbind().remove();
     $.each(_examples, function(id, widget) {
       if (!widget.keepInside) {

@@ -3,7 +3,7 @@
       base = xjs.getDeclare('ui.Widget');
 
   declare('Page.Login', [base], {
-    title: 'XBET 账号登录',
+    title: '万博 账号登录',
     templateString: __include('pages/Page.Login.html'),
     baseClass: 'page-login fade in',
     formValidate: {
@@ -37,9 +37,7 @@
             xjs.load({
               url: 'api/getmember',
               type: 'GET',
-              data: {
-                token: result.content.token
-              }
+              refreshToken: true
             }).then(function(result) {
               xjs.setUserInfo(result[0]);
               if (xjs.router.state && xjs.router.state.tonewsite) location.href = xjs.router.state.tonewsite;
