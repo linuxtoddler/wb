@@ -20,11 +20,7 @@
     delete param.refreshToken;
 
     if (refreshToken) {
-      if (param.data) {
-        param.data.token = xjs.getToken();
-      } else {
-        param.data = {token: xjs.getToken()};
-      }
+      param.headers = {Authorization: "bearer " + xjs.getToken()};
     }
 
     var wait = function() {

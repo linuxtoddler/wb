@@ -1,66 +1,65 @@
-<form class="payment-bank">
+<form class="payment-bank" data-xjs-mixin="plugin.formValidate">
 	<div class="input-box">
-		<label for="username">汇款人姓名：</label>
-		<input type="text" id="username">
+		<label for="transferName">汇款人姓名：</label>
+		<input type="text" id="transferName" name="transferName">
 	</div>
 	<div class="input-box">
-		<label for="bankNum">汇款银行卡：</label>
-		<input type="text" id="bankNum">
+		<label for="transferCard">汇款银行卡：</label>
+		<input type="text" id="transferCard" name="transferCard">
 	</div>
 	<div class="input-box address-box row">
 		<div class="col-6">
-			<select name="" id="">
+			<select name="transferBank">
 				<option value="">开户银行</option>
+				<% for (var i = 0; i < data.banklist.length; i++) { 
+						 var bank = data.banklist[i];
+				%>
+				<option value="<%-bank.uid%>"><%-bank.name%></option>
+				<% } %>
 			</select>
 			<div class="select-arrow"></div>
 		</div>
 		<div class="col-6">
-			<select name="" id="">
+			<select name="transferMode">
 				<option value="">汇款方式</option>
+				<% for (var i = 0; i < data.payment.length; i++) { 
+				%>
+				<option value="<%-data.payment[i]%>"><%-data.payment[i]%></option>
+				<% } %>
 			</select>
 			<div class="select-arrow"></div>
 		</div>
 	</div>
-	<div class="input-box address-box row">
+	<div class="input-box address-box row" data-xjs-mixin="plugin.address">
 		<div class="col-6">
-			<select name="" id="">
+			<select name="transferProvince" id="Province">
 				<option value="">开户省</option>
 			</select>
 			<div class="select-arrow"></div>
 		</div>
 		<div class="col-6">
-			<select name="" id="">
+			<select name="transferCity" id="City">
 				<option value="">市</option>
 			</select>
 			<div class="select-arrow"></div>
 		</div>
 	</div>
 	<div class="input-box">
-		<label for="money">提款金额：</label>
-		<input type="number" id="money">
+		<label for="transferMoney">提款金额：</label>
+		<input type="number" id="transferMoney" name="transferMoney">
 	</div>
 	<div class="promo-choice">
+		<% var promolist = data.promolist; 
+			 for (var i = 0; i < promolist.length; i++) {
+		%>
 		<div class="row">
 			<div class="ui-checkbox">
-				<input type="checkbox" id="promo-1">
-				<label for="promo-1"></label>
+				<input type="radio" name="transferDiscount" id="promo-<%-i%>" value="<%-promolist[i].id%>">
+				<label for="promo-<%-i%>"></label>
 			</div>
-			<label for="promo-1">享受存款1%优惠赠送(最高50元)<a href="">【详情】</a></label>
+			<label for="promo-<%-i%>"><%-promolist[i].content%></label>
 		</div>
-		<div class="row">
-			<div class="ui-checkbox">
-				<input type="checkbox" id="promo-2">
-				<label for="promo-2"></label>
-			</div>
-			<label for="promo-2">享受首存优惠，赠送88元！<a href="">【详情】</a></label>
-		</div>
-		<div class="row">
-			<div class="ui-checkbox">
-				<input type="checkbox" id="promo-3">
-				<label for="promo-3"></label>
-			</div>
-			<label for="promo-3">享受PT老虎机每日首存68%优惠(最高588元)<a href="">【详情】</a></label>
-		</div>
+		<% } %>
 	</div>
 	<input type="submit" class="submit" value="提交存款单">
 </form>

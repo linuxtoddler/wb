@@ -36,7 +36,6 @@
             xjs.setToken(result.content.token);
             xjs.load({
               url: 'api/getmember',
-              type: 'GET',
               refreshToken: true
             }).then(function(result) {
               xjs.setUserInfo(result[0]);

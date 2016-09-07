@@ -33,6 +33,9 @@
 		height: fitPx(84px);
 		line-height: fitPx(82px);
 		margin-bottom: fitPx(53px);
+		label + input {
+			padding-left: fitPx(200px);
+		}
 	}
 	.payment-logo {
 		width: fitPx(169px);

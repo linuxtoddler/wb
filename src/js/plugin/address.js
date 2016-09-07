@@ -21,10 +21,10 @@
     },
     listen: function() {
       var group = this.parent.parent.addressParam, province;
-      this.$provinceNode = this.$domNode.find("[name='" + group.province + "']");
-      this.$cityNode = this.$domNode.find("[name='" + group.city + "']");
-      this.$areaNode = this.$domNode.find("[name='" + group.area + "']");
-      this.$provinceNode[0].options.add(new Option(group.defaultOption || '', ''));
+      this.$provinceNode = this.$domNode.find(group.province);
+      this.$cityNode = group.city ? this.$domNode.find(group.city) : false;
+      this.$areaNode = group.area ? this.$domNode.find(group.area) : false;
+      if (group.placeholder) this.$provinceNode[0].options.add(new Option(group.defaultOption || '', ''));
       for (var i = 0; i < this.addressJSON.length; i++) {
         province = this.addressJSON[i].name;
         this.$provinceNode[0].options.add(new Option(province, province));
@@ -37,13 +37,13 @@
           if (this.addressJSON[i].name == val) {
             this.$provinceNode.data('select', i);
             this.$cityNode.data('select', 0);
-            this.createCityList();
-            this.createAreaList();
+            this.$cityNode && this.createCityList();
+            this.$areaNode && this.createAreaList();
             return;
           }
         };
       }));
-      this.$cityNode.on('change', xjs.hitch(this, function(e) {
+      this.$cityNode && this.$cityNode.on('change', xjs.hitch(this, function(e) {
         var val = e.target.value;
         var provinceId = this.$provinceNode.data('select');
         if (!val || !provinceId) return;

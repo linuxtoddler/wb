@@ -21,9 +21,10 @@
     	success: function(data) {
 				xjs.load({
 					url: 'api/weixinpay',
-					data: data
+          refreshToken: true,
+          data: data
 				}).then(function(result) {
-					console.log(result);
+					window.open(result.url);
 				});
     	}
     }

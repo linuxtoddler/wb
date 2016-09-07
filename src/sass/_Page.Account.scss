@@ -42,6 +42,10 @@
 		height: fitPx(82px);
 		line-height: fitPx(82px);
 		border: 1px solid #d1d0d0;
+		margin-bottom: fitPx(20px);
+		&:last-child {
+			margin-bottom: 0;
+		}
 		input {
 			padding-left: fitPx(16px);
 		}

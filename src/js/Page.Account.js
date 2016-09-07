@@ -18,6 +18,16 @@
     		}]
     	});
     },
+    changePassword: function() {
+      var popup = xjs.createView('ui.Popup.changePassword');
+      popup.update('popup')({
+        title: '修改登陆密码',
+        content: __include('pages/common/popup-changepassword.html'),
+        btns: [{
+          name: '确定'
+        }]
+      });
+    },
     updateInfo: function(param) {
       var popup = xjs.createView('ui.Popup.updateInfo', {
         inputType: param.inputType || 'text',
@@ -37,7 +47,8 @@
                   {
                     name: '确定',
                     then: function() {
-                      param.replaceNode = data.info;
+                      param.replaceNode.value = data.info;
+                      popup.hide();
                     }
                   }
                 ]
@@ -59,7 +70,7 @@
         },
         placeholder: '请输入新的微信号码',
         success: '微信号码修改成功！',
-        field: 'wexin',
+        field: 'weixin',
         replaceNode: this.wechatNode
       });
     },
@@ -97,18 +108,6 @@
         placeholder: '请输入交易密码',
         success: '交易密码修改成功！',
         field: 'secret',
-        replaceNode: this.secretNode
-      });
-    },
-    changePassword: function() {
-      this.updateInfo({
-        validate: {
-          error: '交易密码不能为空！'
-        },
-        inputType: 'password',
-        placeholder: '请输入新的登陆密码',
-        success: '登陆密码修改成功！',
-        field: 'password',
         replaceNode: this.secretNode
       });
     }

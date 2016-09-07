@@ -10,7 +10,6 @@
     hide: function() {
       xjs.destroyView(this.plugins[0].id); //删除弹窗对象里的表单元素
       xjs.destroyView(this.id); //删除弹窗对象
-      this._super();
     }
   });
 

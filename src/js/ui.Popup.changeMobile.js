@@ -23,8 +23,8 @@
         var oldParam = {
           phonenumber: xjs.getUserInfo().phone,
           code: data.code
-        }
-        var formplugin = this;
+        },
+        popupClass = this.parent;
         xjs.load({ //提交旧的手机号码以及短信验证码
           url: 'api/check',
           data: oldParam
@@ -43,7 +43,8 @@
                 {
                   name: '确定',
                   then: function() {
-                    formplugin.replaceNode.value = data.phonenumber; //刷新用户信息页面的手机号码显示
+                    popupClass.replaceNode.value = data.phonenumber; //刷新用户信息页面的手机号码显示
+                    popupClass.hide();
                   }
                 }
               ]
