@@ -1,9 +1,11 @@
 (function(xjs) {
   var declare = xjs.declare;
-
+  // 定义基类对象
   declare('ui.Widget', {
+    // 初始化以及执行顺序控制函数
     init: function(dom) {
-      this.render(dom);
+      this.domNode = this.domNode || (this.$domNode = $(dom)).get(0);
+      this.id = this.domNode.id;
       $.when(this.syncGetData()).done(
         xjs.hitch(this, function() {
           this.buildRender();
@@ -12,47 +14,29 @@
       );
       return this;
     },
-    render: function(dom) {
-      document.title = this.title || document.title;
-      this.domNode = this.domNode || (this.$domNode = $(dom)).get(0);
-      this.id = this.domNode.id;
-    },
+    /**
+     * [syncGetData 调用this.request函数获取页面初始化前的请求列表]
+     * @return {[Deferred]}       [返回Deferred异步回调方法]
+     */
     syncGetData: function() {
       var o = this.request ? this.request() : 0, dtd = $.Deferred();
       if (!o) return dtd.resolve();
       if (o.then) {
         o.done(xjs.hitch(this, waitRequest));
         return dtd.promise();
-      };
-      xjs.hitch(this, waitRequest)(o);
-      function waitRequest(param) {
-        var param = param instanceof Array ? param : [param], i, name, count = 0;
-        this.data = this.data || {};
-        for (i = 0; i < param.length; i++) {
-          name = param[i].app;
-          if(!param[i].hasOwnProperty('showShadow')) param[i].showShadow = true;
-          delete param[i].app;
-          xjs.load( param[i] ).then(
-            xjs.hitch(this, function(reslute, key) {
-              this.data[ key ] = reslute;
-              count += 1;
-              if (count == param.length) dtd.resolve();
-            }, name)
-          );
-        }
-      };
+      }
+      xjs.hitch(this, waitRequest)(o, dtd);
       return dtd.promise();
     },
+    /** [buildRender 渲染模板，并注册event事件以及node代理对象] */
     buildRender: function() {
       this.$domNode.addClass(this.baseClass);
-      if (this.templateString) {
+      if (typeof this.templateString == 'function') {
+        this.domNode.innerHTML = this.templateString(this);
+      } else if (typeof this.templateString == 'string') {
         this.domNode.innerHTML = _.template(this.templateString)(this);
       }
       __createNode.call(this) && __createEvent.call(this) && __minxinProp.call(this);
-
-      xjs.lazyload[this.lazyload ? 'on' : 'off'](); //开启延迟加载
-      if (xjs.ui) xjs.ui.loading.hide();
-
     }
   });
   function __createNode() {
@@ -103,5 +87,21 @@
       }
     }
     return true;
+  }
+  function waitRequest(param, dtd) {
+    var param = param instanceof Array ? param : [param], i, name, count = 0;
+    this.data = this.data || {};
+    for (i = 0; i < param.length; i++) {
+      name = param[i].app;
+      if(!param[i].hasOwnProperty('showShadow')) param[i].showShadow = true;
+      delete param[i].app;
+      xjs.load( param[i] ).then(
+        xjs.hitch(this, function(reslute, key) {
+          this.data[ key ] = reslute;
+          count += 1;
+          if (count == param.length) dtd.resolve();
+        }, name)
+      );
+    }
   }
 })(xjs);
