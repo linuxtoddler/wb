@@ -46,7 +46,7 @@
       this.$cityNode && this.$cityNode.on('change', xjs.hitch(this, function(e) {
         var val = e.target.value;
         var provinceId = this.$provinceNode.data('select');
-        if (!val || !provinceId) return;
+        if (!val || !provinceId || !this.$AreaNode) return;
         for (var i = 0; i < this.addressJSON[provinceId].city.length; i++) {
           if (this.addressJSON[provinceId].city[i].name == val) {
             this.$cityNode.data('select', i);

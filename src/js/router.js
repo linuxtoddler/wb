@@ -73,7 +73,60 @@
 	});
 
 	xjs.router.define('Deposit', true,function(paymentId) {
-		xjs.createView('Page.Deposit', {paymentId: paymentId});
+		if (paymentId == 1) { //手动存款
+			xjs.load({
+				url: 'api/checkhandpay',
+				refreshToken: true,
+				skipError: true,
+				type: 'GET'
+			}).then(function(result) {
+				if (result.code == 0) {
+			    xjs.createView('Page.submitPaymentOrder', {paymentId: paymentId});
+				} else if (result.code == -1) { // 手工重置渠道不可用
+					xjs.ui.popup({
+						content: result.msg,
+						btns: [
+							{
+								name: '支付宝充值',
+								then: function() {
+									xjs.router.navigator('#deposit/2/');
+								}
+							},
+							{
+								name: '微信充值',
+								then: function() {
+									xjs.router.navigator('#deposit/3/');
+								}
+							}
+						]
+					});
+				} else if (result.code == -2) { // 代理账号不能充值
+					xjs.ui.popup({
+						content: result.msg,
+						btns: [{
+							name: '返回首页',
+							then: function() {
+								xjs.router.navigator('#home/');
+							}
+						}]
+					});
+				} else if (result.code == -3) { // 已有订单提交
+					xjs.ui.popup({
+						content: result.msg,
+						btns: [{
+							name: '查看汇款账号',
+							then: function() {
+								xjs.router.navigator('#paybank/?billno=' + result.content.billno);
+							}
+						}]
+					})
+				}
+			});
+		} else if (paymentId == 2) { //支付宝充值
+	    xjs.createView('Page.submitAlipayOrder', {paymentId: paymentId});
+		} else if (paymentId == 3) { //微信充值
+	    xjs.createView('Page.submitWechatPayOrder', {paymentId: paymentId});
+		}
 	});
 
 	xjs.router.define('Tranfers', true,function() {

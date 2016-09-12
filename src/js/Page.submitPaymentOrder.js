@@ -4,8 +4,13 @@
 
   declare('Page.submitPaymentOrder', [base], {
     title: '填写汇款单',
-    templateString: __include('pages/Page.submitPaymentOrder.html'),
-    baseClass: 'page-paymentorder fade in',
+    templateString: __include('pages/Page.Deposit.html'),
+    contentTpl: __include('pages/Page.submitPaymentOrder.html'),
+    baseClass: 'page-deposit page-paymentorder fade in',
+    buildRender: function() {
+      this.templateString = this.templateString.replace('${CONTENT}', this.contentTpl);
+      this._super();
+    },
     request: function() {
     	return [
 	    	{
@@ -46,12 +51,13 @@
     			}
     		},
     		transferCard: {
+          error: '您输入的银行卡号有误',
     			check: function(s) {
-    				if (s == '') {
-    					return '请输入银行卡卡号';
-    				} else if (isNaN(s) && !/^\d{16}|\d{19}$/.test(s)) {
-    					return '您输入的银行卡号有误';
-    				}
+    				// if (s == '') {
+    					// return '请输入银行卡卡号';
+    				// } else if (isNaN(s) && !/^\d{16}|\d{19}$/.test(s)) {
+    					return /^\d{16}|\d{19}$/.test(s);
+    				// }
     			}
     		},
     		transferProvince: {
@@ -60,7 +66,24 @@
     		transferCity: {
     			error: '请选择银行卡开户城市'
     		}
-    	}
+    	},
+      success: function(obj) {
+        xjs.load({
+          url: 'api/submitpay',
+          refreshToken: true,
+          data: obj
+        }).then(function() {
+          xjs.ui.popup({
+            content: '汇款信息提交成功，请将款项汇到我们指定的银行帐号。',
+            btns: [{
+              name: '确定',
+              then: function() {
+                xjs.router.navigator('#paybank/');
+              }
+            }]
+          })
+        });
+      }
     },
     addressParam: {
     	province: '[id="Province"]',

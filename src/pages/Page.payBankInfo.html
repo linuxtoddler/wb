@@ -22,32 +22,40 @@
 	<div class="tab-switch-btns">
 		<a href="/#paybank/" class="active">万博收款银行卡</a>
 	</div>
-	<div class="tab-switch-pages" data-xjs-element="containerNode">
+	<div class="tab-switch-pages">
 		<form class="payment-bank">
 			<section>
 				<div class="input-box">
-					<label for="username">收款银行：</label>
-					<input type="text" id="username" value="建设银行" disabled>
+					<label>订单编号：</label>
+					<input type="text" value="<%-xjs.url().param.billno%>" disabled>
 				</div>
 				<div class="input-box">
-					<label for="bankNum">开户行：</label>
-					<input type="text" id="bankNum" value="保定试试行" disabled>
+					<label>收款银行：</label>
+					<input type="text" value="建设银行" disabled>
 				</div>
 				<div class="input-box">
-					<label for="money">收款账号：</label>
-					<input type="number" id="money" value="16647812647812364" disabled>
+					<label>收款银行：</label>
+					<input type="text" value="建设银行" disabled>
 				</div>
 				<div class="input-box">
-					<label for="money">收款人：</label>
-					<input type="text" id="money" value="马双喜" disabled>
+					<label>开户行：</label>
+					<input type="text" value="保定试试行" disabled>
+				</div>
+				<div class="input-box">
+					<label>收款账号：</label>
+					<input type="number" value="16647812647812364" disabled>
+				</div>
+				<div class="input-box">
+					<label>收款人：</label>
+					<input type="text" value="马双喜" disabled>
 				</div>
 			</section>
 			<div class="input-box">
-				<label for="money">汇款留言：</label>
-				<input type="text" id="money">
+				<label>汇款留言：</label>
+				<input type="text">
 			</div>
-			<input type="submit" class="submit" value="我已汇款">
-			<input type="submit" class="submit" value="取消订单">
+			<input type="button" class="submit" value="我已汇款" data-xjs-event="tap: confirmOrder;">
+			<input type="button" class="submit" value="取消订单" data-xjs-event="tap: cancelOrder;">
 		</form>
 	</div>
 </div>
