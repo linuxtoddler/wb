@@ -24,6 +24,26 @@
 	.address-box {
 		.col-6 {
 			position: relative;
+			height: 100%;
+		}
+	}
+	.code-layer {
+		overflow: hidden;
+		.input-box {
+			width: fitPx(360px);
+			float: left;
+		}	
+		.btn {
+			width: fitPx(220px);
+			height: fitPx(82px);
+			line-height: fitPx(82px);
+			border-radius: fitPx(4px);
+			text-align: center;
+			font-size: fitPx(30px);
+			float: right;
+			background: $importantColor;
+			color: #fff;
+			border: none;
 		}
 	}
 	.submit {

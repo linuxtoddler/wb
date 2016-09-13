@@ -5,6 +5,13 @@
   declare('Page.Withdrawals', [base], {
     title: '我要提款',
     templateString: __include('pages/Page.Withdrawals.html'),
-    baseClass: 'page-withdrawals fade in'
+    baseClass: 'page-withdrawals fade in',
+    request: function() {
+    	return [{
+    		app: 'bindcard',
+    		url: 'api/showbindcard',
+    		refreshToken: true
+    	}];
+    }
   });
 })(xjs);

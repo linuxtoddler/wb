@@ -1,4 +1,4 @@
-@import 'common/header.html'
+@import 'common/header.html'
 @import 'common/tips.html'
 <div class="progress-node">
 	<div class="step-node">
@@ -34,10 +34,6 @@
 					<input type="text" value="建设银行" disabled>
 				</div>
 				<div class="input-box">
-					<label>收款银行：</label>
-					<input type="text" value="建设银行" disabled>
-				</div>
-				<div class="input-box">
 					<label>开户行：</label>
 					<input type="text" value="保定试试行" disabled>
 				</div>
@@ -52,7 +48,7 @@
 			</section>
 			<div class="input-box">
 				<label>汇款留言：</label>
-				<input type="text">
+				<input type="text" value="<%-data.payment.message%>" disabled>
 			</div>
 			<input type="button" class="submit" value="我已汇款" data-xjs-event="tap: confirmOrder;">
 			<input type="button" class="submit" value="取消订单" data-xjs-event="tap: cancelOrder;">

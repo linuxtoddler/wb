@@ -58,13 +58,14 @@
         }
       });
       popup.update('popup')({
-        title: '修复微信号',
+        title: param.title,
         content: __include('pages/common/popup-updateinfo.html'),
         btns: [{name: '确定'}]
       });
     },
     changeWechat: function() {
       this.updateInfo({
+        title: '修改微信号',
         validate: {
           error: '不能留空，请重新输入'
         },
@@ -76,6 +77,7 @@
     },
     changeQQ: function() {
       this.updateInfo({
+        title: '修改QQ号',
         validate: {
           error: '不能留空，请重新输入'
         },
@@ -87,6 +89,7 @@
     },
     changeEmail: function() {
       this.updateInfo({
+        title: '修改电子邮箱地址',
         validate: {
           error: '您输入的邮箱格式不正确',
           check: function(val) {
@@ -101,6 +104,7 @@
     },
     changeSecret: function() {
       this.updateInfo({
+        title: '修改交易密码',
         validate: {
           error: '交易密码不能为空！'
         },

@@ -1,41 +1,51 @@
 @import 'common/header.html'
 @import 'common/tips.html'
 <div class="container">
-	<form>
+	<% var user = xjs.getUserInfo(); %>
+	<form data-xjs-mixin="plugin.formValidate">
 		<div class="input-box disabled">
-			<label>真实姓名： **军</label>
+			<label>真实姓名： <%-user.bankname%></label>
 		</div>
 		<div class="input-box">
-			<select name="" id="">
+			<select name="bindbank">
 				<option value="">选择银行</option>
+				<% for (var i = 0; i < data.banklist.length; i++) { 
+						 var bank = data.banklist[i];
+				%>
+				<option value="<%-bank.uid%>"><%-bank.name%></option>
+				<% } %>
 			</select>
 			<div class="select-arrow"></div>
 		</div>
-		<div class="input-box address-box row">
+		<div class="input-box address-box row" data-xjs-mixin="plugin.address">
 			<div class="col-6">
-				<select name="" id="">
+				<select name="province" id="province">
 					<option value="">省</option>
 				</select>
 				<div class="select-arrow"></div>
 			</div>
 			<div class="col-6">
-				<select name="" id="">
+				<select name="city" id="city">
 					<option value="">市</option>
 				</select>
 				<div class="select-arrow"></div>
 			</div>
 		</div>
 		<div class="input-box">
-			<select name="" id="">
-				<option value="">选择开户行</option>
-			</select>
-			<div class="select-arrow"></div>
+			<input type="text" name="branch" placeholder="请输入开户行">
 		</div>
 		<div class="input-box">
-			<input type="number" placeholder="请输入银行卡卡号">
+			<input type="number" name="card" placeholder="请输入银行卡卡号">
+		</div>
+		<div class="code-layer">
+			<div class="input-box">
+				<input type="text" name="witbtitVerifi" id="code" autocomplete="off" placeholder="输入手机短信验证码">
+			</div>
+			<button class="btn" data-xjs-mixin="ui.sendSMSCode" type="button">获取验证码</button>
 		</div>
 		<input type="submit" class="submit" value="确定绑定">
 	</form>
+	<% if (data.bindcard) { %>
 	<table class="card-list">
 		<thead>
 			<tr>
@@ -48,22 +58,17 @@
 			</tr>
 		</thead>
 		<tbody>
+			<% for (var i = 0; i < data.bindcard.length; i++) { 
+				var card = data.bindcard[i];
+			%>
 			<tr>
-				<td>工商银行</td>
-				<td>北京市东城区东郊民巷东郊支行</td>
-				<td>6222027878778978988</td>
+				<td><%-card.name%></td>
+				<td><%-(card.province + card.city + card.branck)%></td>
+				<td><%-card.cardnum%></td>
 			</tr>
-			<tr>
-				<td>建设银行</td>
-				<td>北京市东城区东郊民巷东郊支行</td>
-				<td>5000052154523289764</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
+			<% } %>
 		</tbody>
 	</table>
+	<% } %>
 </div>
 @import 'common/navigator.html'

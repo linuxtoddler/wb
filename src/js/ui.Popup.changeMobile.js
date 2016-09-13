@@ -53,31 +53,6 @@
         });
       }
     },
-    startup: function() {
-      var that = this;
-      setTimeout(function() { //延迟100毫秒等待表单验证元素渲染完成
-        that.plugins[0].$sendCodeNode.on('tap', xjs.hitch(that.plugins[0], function(e) { //监听获取验证码的按钮点击事件
-          var btn = $(e.target);
-          var phone = xjs.getUserInfo().phone;
-          if (btn.hasClass('sended')) return; //检查是否正在发送过程中
-          btn.addClass('sended').html('短信已发送');
-          xjs.load({
-            url: 'api/send',
-            data: {phonenumber: phone},
-            skipError: true
-          }).then(function(result) {
-            var count = 0;
-            var timer = setInterval(function() { //设定倒计时
-              btn.html((count += 1) + '秒');
-              if (count == 60) {
-                clearInterval(timer);
-                btn.removeClass('sended').html('获取验证码');
-              }
-            }, 1000);
-          });
-        }));
-      }, 100);
-    },
     fnCall: function() {
       this.$formNode.trigger('submit'); //当弹窗的确定按钮被点击时 触发表单的提交，前端验证通过后 将会触发formValidate里的success回调
     },
