@@ -22,6 +22,12 @@
     },
     formValidate: {
     	input: {
+        realname: {
+          error: '请输入您的真实姓名',
+          check: function(val) {
+            return /[\u4e00-\u9fa5]{2,4}/.test(val);
+          }
+        },
     		bindbank: {
     			error: '请选择银行'
     		},

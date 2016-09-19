@@ -19,7 +19,7 @@
     },
     confirmOrder: function() {
     	var billNo = xjs.url().param.billno;
-    	xjs.ui.load({
+    	xjs.load({
     		url: 'api/successpay',
     		refreshToken: true,
     		data: {

@@ -54,8 +54,9 @@
     if (xjs.ui && !offAnimate) xjs.ui.loading.hide();
     if (code == '3') { //如果用户未登录
       return setTimeout(function() {
-        location.hash = '#login/';
-        location.reload();
+        xjs.cleanToken();
+        xjs.setUserInfo(null);
+        xjs.router.navigator('#login/', {backHash: location.hash}, true);
       }, 200);
     }
     xjs.ui.popup({

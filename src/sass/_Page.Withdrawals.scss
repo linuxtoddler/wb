@@ -26,6 +26,11 @@
 				span {
 					vertical-align: middle;
 					font-size: fitPx(24px);
+					max-width: fitPx(210px);
+					overflow: hidden;
+					display: inline-block;
+					vertical-align: middle;
+					text-overflow: ellipsis;
 				}
 			}
 		}

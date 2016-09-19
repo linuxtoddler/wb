@@ -43,7 +43,7 @@
         refreshToken: true
       }).then(function(result) {
         if (result.code == "0") {
-          xjs.setUserInfo(result.content[0]);
+          xjs.setUserInfo(result.content);
         } else {
           xjs.cleanToken();
         }

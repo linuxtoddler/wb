@@ -4,7 +4,8 @@
 	<% var user = xjs.getUserInfo(); %>
 	<form data-xjs-mixin="plugin.formValidate">
 		<div class="input-box disabled">
-			<label>真实姓名： <%-user.bankname%></label>
+			<label>真实姓名：<%-data.bindcard ? user.bankname : "" %></label>
+			<input type="<%-!data.bindcard ? "text" : "hidden" %>" value="<%-user.bankname%>" name="realname">
 		</div>
 		<div class="input-box">
 			<select name="bindbank">
@@ -63,7 +64,7 @@
 			%>
 			<tr>
 				<td><%-card.name%></td>
-				<td><%-(card.province + card.city + card.branck)%></td>
+				<td><%-(card.province + card.city + card.branch)%></td>
 				<td><%-card.cardnum%></td>
 			</tr>
 			<% } %>

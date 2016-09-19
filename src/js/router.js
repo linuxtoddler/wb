@@ -130,7 +130,25 @@
 	});
 
 	xjs.router.define('Tranfers', true,function() {
-		xjs.createView('Page.Tranfers');
+		xjs.load({
+			url: 'api/checksecret',
+			refreshToken: true,
+			type: 'GET'
+		}).then(function(result) {
+			if (result.isScretset) {
+				xjs.createView('Page.Tranfers');
+			} else {
+				xjs.ui.popup({
+					content: '您还未设置交易口令，点击确定前往设置',
+					btns: [{
+						name: '设置',
+						then: function() {
+							xjs.router.navigator('#account/');
+						}
+					}]
+				})
+			}
+		});
 	});
 
 	xjs.router.define('PayBank', true,function() {

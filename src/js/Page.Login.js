@@ -38,7 +38,7 @@
               url: 'api/getmember',
               refreshToken: true
             }).then(function(result) {
-              xjs.setUserInfo(result[0]);
+              xjs.setUserInfo(result);
               if (xjs.router.state && xjs.router.state.tonewsite) location.href = xjs.router.state.tonewsite;
               xjs.router.navigator(xjs.router.state && xjs.router.state.backHash ? xjs.router.state.backHash : '#home/', null, true);
             });

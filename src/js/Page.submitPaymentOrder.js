@@ -72,13 +72,13 @@
           url: 'api/submitpay',
           refreshToken: true,
           data: obj
-        }).then(function() {
+        }).then(function(result) {
           xjs.ui.popup({
             content: '汇款信息提交成功，请将款项汇到我们指定的银行帐号。',
             btns: [{
               name: '确定',
               then: function() {
-                xjs.router.navigator('#paybank/');
+                xjs.router.navigator('#paybank/?billno=' + result.billno);
               }
             }]
           })

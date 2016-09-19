@@ -194,7 +194,7 @@ html, body {
   display: table;
   transition: opacity ease-in .2s;
   &.shadow {
-    background: #202020;
+    background: #f1effc;
   }
   &.fadeout {
     opacity: 0;
@@ -242,7 +242,7 @@ html, body {
   }
 
   .cssload-ball_3 {
-    background-color: rgba(23,116,188,0.98);
+    background-color: rgb(23,116,188);
     top: 11px; 
     left: 0;
   }

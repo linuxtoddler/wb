@@ -15,24 +15,30 @@
 	</div>
 </div>
 <div class="contianer">
-	<form>
+	<form data-xjs-mixin="plugin.formValidate">
 		<div class="input-box">
-			<select name="" id="">
+			<select name="turnOut">
 				<option value="">转出平台</option>
+				<% for (var i = 0; i < data.lobbys.length; i++) { %>
+				<option value="<%-data.lobbys[i].appid%>"><%-data.lobbys[i].name%></option>
+				<% } %>
 			</select>
 			<i class="ui-slidemenu"></i>
 		</div>
 		<div class="input-box">
-			<select name="" id="">
+			<select name="turnInto">
 				<option value="">转入平台</option>
+				<% for (var i = 0; i < data.lobbys.length; i++) { %>
+				<option value="<%-data.lobbys[i].appid%>"><%-data.lobbys[i].name%></option>
+				<% } %>
 			</select>
 			<i class="ui-slidemenu"></i>
 		</div>
 		<div class="input-box">
-			<input type="number" id="money" placeholder="请输入转账金额">
+			<input type="number" name="tranMoney" placeholder="请输入转账金额">
 		</div>
 		<div class="input-box">
-			<input type="text" id="money" placeholder="请输入交易指令">
+			<input type="password" name="tranPass" placeholder="请输入交易指令">
 		</div>
 		<input type="submit" class="submit" value="确定转账">
 	</form>
