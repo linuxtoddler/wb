@@ -27,34 +27,22 @@
       },
       success: function(data) { //表单通过前端验证时的回调
         popupClass = this.parent;
-        xjs.load({ //验证旧密码
-          url: 'api/updateinfo',
+        xjs.load({
+          url: 'api/updatepassword',
           refreshToken: true,
           data: {
-            field: 'prepassword',
-            value: data.prepassword
+            prepassword: data.prepassword,
+            password: data.password
           }
         }).then(function() {
-          xjs.load({ //上传新密码
-            url: 'api/updateinfo',
-            refreshToken: true,
-            data: {
-              field: 'password',
-              value: data.prepassword
-            }
-          }).then(function() {
-            xjs.ui.popup({ 
-              content: '登陆密码修改成功！',
-              btns: [
-                {
-                  name: '确定',
-                  then: function() {
-                    popupClass.replaceNode.value = data.phonenumber; //刷新用户信息页面的手机号码显示
-                    popupClass.hide();
-                  }
-                }
-              ]
-            });
+          xjs.ui.popup({
+            content: '登陆密码修改成功！',
+            btns: [{
+              name: '确定',
+              then: function() {
+                popupClass.hide();
+              }
+            }]
           });
         });
       }

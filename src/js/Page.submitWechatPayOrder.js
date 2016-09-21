@@ -7,6 +7,13 @@
     templateString: __include('pages/Page.Deposit.html'),
     contentTpl: __include('pages/Page.submitWechatPayOrder.html'),
     baseClass: 'page-deposit page-paymentorder fade in',
+    request: function() {
+      return {
+        app: 'promolist',
+        url: 'api/activitylist',
+        type: 'GET'
+      };
+    },
     buildRender: function() {
       this.templateString = this.templateString.replace('${CONTENT}', this.contentTpl);
       this._super();
@@ -29,7 +36,7 @@
           refreshToken: true,
           data: data
 				}).then(function(result) {
-					window.open(result.url);
+					location.href = result.url;
 				});
     	}
     }

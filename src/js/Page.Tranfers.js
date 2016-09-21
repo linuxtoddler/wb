@@ -37,7 +37,7 @@
     	},
     	success: function(obj) {
     		xjs.load({
-    			url: 'api/getnameandphone',
+    			url: 'api/moneytransfer',
     			refreshToken: true,
     			data: obj
     		}).then(function() {

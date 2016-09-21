@@ -6,6 +6,14 @@
     title: '个人资料',
     templateString: __include('pages/Page.Account.html'),
     baseClass: 'page-account fade in',
+    request: function() {
+      return {
+        app: 'checkSecret',
+        url: 'api/checksecret',
+        refreshToken: true,
+        type: 'GET'
+      };
+    },
     changeMobile: function() {
     	var popup = xjs.createView('ui.Popup.changeMobile', {
         replaceNode: this.phoneNode
@@ -35,9 +43,10 @@
         formValidate: {
           input: param.validate,
           success: function(data) {
-            var newData = {field: param.field, value: data.info};
+            var newData = {};
+            newData[param.field] = data.info;
             xjs.load({
-              url: 'api/updateinfo',
+              url: param.url,
               refreshToken: true,
               data: newData
             }).then(function() {
@@ -47,7 +56,7 @@
                   {
                     name: '确定',
                     then: function() {
-                      param.replaceNode.value = data.info;
+                      if (param.replaceNode) param.replaceNode.value = data.info;
                       popup.hide();
                     }
                   }
@@ -65,6 +74,7 @@
     },
     changeWechat: function() {
       this.updateInfo({
+        url: 'api/updatewx',
         title: '修改微信号',
         validate: {
           error: '不能留空，请重新输入'
@@ -77,9 +87,11 @@
     },
     changeQQ: function() {
       this.updateInfo({
+        url: 'api/updateqq',
         title: '修改QQ号',
+        inputType: 'number',
         validate: {
-          error: '不能留空，请重新输入'
+          error: '请输入您的QQ号码'
         },
         placeholder: '请输入您的QQ号码',
         success: 'QQ号码修改成功！',
@@ -87,33 +99,32 @@
         replaceNode: this.qqNode
       });
     },
-    changeEmail: function() {
-      this.updateInfo({
-        title: '修改电子邮箱地址',
-        validate: {
-          error: '您输入的邮箱格式不正确',
-          check: function(val) {
-            return xjs.validates.mail(val);
-          }
-        },
-        placeholder: '请输入您的邮箱地址',
-        success: '邮箱地址修改成功！',
-        field: 'email',
-        replaceNode: this.qqNode
-      });
-    },
     changeSecret: function() {
-      this.updateInfo({
-        title: '修改交易密码',
-        validate: {
-          error: '交易密码不能为空！'
-        },
-        inputType: 'password',
-        placeholder: '请输入交易密码',
-        success: '交易密码修改成功！',
-        field: 'secret',
+      var popup = xjs.createView('ui.Popup.changeSecret', {
         replaceNode: this.secretNode
       });
+      popup.update('popup')({ //设定弹窗为popup类型 以及弹窗内容，并弹出
+        title: '修改交易口令',
+        content: __include('pages/common/popup-changesecret.html'),
+        btns: [{
+          name: '确定'
+        }]
+      });
     }
+    // changeEmail: function() {
+    //   this.updateInfo({
+    //     title: '修改电子邮箱地址',
+    //     validate: {
+    //       error: '您输入的邮箱格式不正确',
+    //       check: function(val) {
+    //         return xjs.validates.mail(val);
+    //       }
+    //     },
+    //     placeholder: '请输入您的邮箱地址',
+    //     success: '邮箱地址修改成功！',
+    //     field: 'email',
+    //     replaceNode: this.qqNode
+    //   });
+    // }
   });
 })(xjs);

@@ -16,16 +16,18 @@
     formValidate: {
       input: {
         money: {
-          error: '请输入提款金额',
           check: function(s) {
-            return !isNaN(s);
+            s = Number(s);
+            if (!s) {
+              return "您输入的金额有误";
+            } else if (s > Number(xjs.getUserInfo().money)) {
+              return "提款金额不能超过账户余额";
+            }
+            return true;
           }
         },
-        transcation: {
-          error: '您输入的验证码有误',
-          check: function(s) {
-            return xjs.validates.smscode(s);
-          }
+        transaction: {
+          error: '请输入交易口令'
         }
       },
       success: function(obj) {

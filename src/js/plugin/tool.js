@@ -85,7 +85,7 @@
     validates: {
       mobile: function(s) {
         s = xjs.$.trim(s);
-        return s && /^1[3587][0-9]{9}$/.test(s);
+        return s && /^1[34587][0-9]{9}$/.test(s);
       },
       password: function(s) {
         s = xjs.$.trim(s);

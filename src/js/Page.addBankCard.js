@@ -44,26 +44,35 @@
     			}
     		},
     		witbtitVerifi: {
-    			error: '请输入11位的手机号码',
+    			error: '请输入手机验证码',
     			check: function(s) {
             return xjs.validates.smscode(s);
     			}
     		}
     	},
       success: function(obj) {
-        xjs.load({
-          url: 'api/bindbank',
-          refreshToken: true,
-          data: obj
+        var oldParam = {
+          phonenumber: xjs.getUserInfo().phone,
+          code: obj.witbtitVerifi
+        };
+        xjs.load({ //提交旧的手机号码以及短信验证码
+          url: 'api/check',
+          data: oldParam
         }).then(function() {
-          xjs.ui.popup({
-            content: '银行卡绑定成功!',
-            btns: [{
-              name: '确定',
-              then: function() {
-                xjs.router.navigator('#addcard/');
-              }
-            }]
+          xjs.load({
+            url: 'api/bindbank',
+            refreshToken: true,
+            data: obj
+          }).then(function() {
+            xjs.ui.popup({
+              content: '银行卡绑定成功!',
+              btns: [{
+                name: '确定',
+                then: function() {
+                  xjs.router.navigator('#addcard/');
+                }
+              }]
+            });
           });
         });
       }

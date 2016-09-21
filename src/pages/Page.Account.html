@@ -32,12 +32,12 @@
 	</div> -->
 	<div class="input-box">
 		<label for="secret">交易口令：</label>
-		<input type="password" name="secret" id="secret" readonly="true" data-xjs-element="secretNode">
+		<input type="password" name="secret" id="secret" <% if (data.checkSecret.isScretset) { %>value="******"<% } %> readonly="true" data-xjs-element="secretNode">
 		<div class="menu"><span data-xjs-event="tap: changeSecret;">修改</span></div>
 	</div>
 	<div class="input-box">
 		<label for="password">登陆密码：</label>
-		<input type="password" name="password" id="password" readonly="true" data-xjs-element="passwordNode">
+		<input type="password" name="password" id="password" value="******" readonly="true" data-xjs-element="passwordNode">
 		<div class="menu"><span data-xjs-event="tap: changePassword;">修改</span></div>
 	</div>
 </div>

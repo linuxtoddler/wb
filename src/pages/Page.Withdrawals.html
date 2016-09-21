@@ -17,14 +17,14 @@
 <div class="contianer">
 	<form data-xjs-mixin="plugin.formValidate">
 		<div class="input-box">
-			<label for="money">提款金额</label>
+			<label for="money">提款金额：</label>
 			<input type="number" id="money" name="money" placeholder="请输入提款金额">
 		</div>
 		<div class="bank-list">
 			<% for(var i = 0; i < data.bindcard.length; i++) { %>
 			<div class="input-box">
 				<label for="bank-<%-i%>">
-					<img src="/assets/images/test/bank-1.jpg">
+					<img src="<%-data.bindcard[i].icon%>">
 					<span><%-data.bindcard[i].cardnum%></span>
 					<div class="ui-checkbox">
 						<input type="radio" name="bankId" id="bank-<%-i%>" value="<%-data.bindcard[i].id%>" <% if (!i) { %>checked<% } %>>
@@ -33,11 +33,10 @@
 				</label>
 			</div>
 			<% } %>
-		<div class="code-layer">
-			<div class="input-box">
-				<input type="text" name="transcation" placeholder="请输入手机验证码">
-			</div>
-			<span class="btn" data-xjs-mixin="ui.sendSMSCode">发送验证码</span>
+		</div>
+		<div class="input-box">
+			<label for="transaction">交易口令：</label>
+			<input type="password" id="transaction" name="transaction" placeholder="请输入提款交易口令">
 		</div>
 		<input type="submit" class="submit" value="提交">
 	</form>

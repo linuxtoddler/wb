@@ -57,7 +57,13 @@
 	});
 
 	xjs.router.define('userCenter', true, function() {
-		xjs.createView('Page.userCenter');
+    xjs.load({
+      url: 'api/getmember',
+      refreshToken: true
+    }).then(function(result) {
+      xjs.setUserInfo(result);
+			xjs.createView('Page.userCenter');
+		});
 	});
 
 	xjs.router.define('Account', true, function() {
