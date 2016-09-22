@@ -17,7 +17,6 @@
 		padding: fitPx(22px) fitPx(22px) 0;
 	}
 	.box {
-		height: fitPx(189px);
 		background: #fff;
 		border: 1px solid #ccc;
 		border-radius: fitPx(5px);
@@ -34,44 +33,30 @@
 				font-size: fitPx(30px);
 				display: inline-block;
 			}
-			a {
-				color: #999;
-				font-size: fitPx(20px);
-				display: inline-block;
-			}
 		}
 	}
 	.lobby-link {
 		@extend .box;
 		.content {
 			padding: fitPx(5px) 0;
+			.row {
+				padding: fitPx(5px) 0;
+			}
+			.img-box {
+				margin: 0 fitPx(2px) 0 fitPx(5px);
+			}
+			.col-6:last-child .img-box {
+				margin: 0 fitPx(5px) 0 fitPx(2px);
+			}
 			.lobby-photo {
 				width: 100%;
 				height: fitPx(136px);
 				display: block;
 			}
-			.intro {
-				font-size: fitPx(14px);
-				color: #333;
-				line-height: fitPx(24px);
-				padding: 0 fitPx(5px) 0;
-				height: fitPx(89px);
-				overflow: hidden;
-			}
-			.btn {
-				display: block;
-				background: #00abed;
-				width: fitPx(189px);
-				height: fitPx(38px);
-				line-height: fitPx(38px);
-				color: #fff;
-				text-align: center;
-				font-size: fitPx(18px);
-				margin: 0 auto;
-			}
 		}
 	}
 	.promo-link {
+		height: fitPx(189px);
 		@extend .box;
 		.tit span {
 			padding-left: fitPx(217px);

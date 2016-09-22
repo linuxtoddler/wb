@@ -15,6 +15,27 @@
         lazyLoadingOnTransitionStart: true,
         lazyLoadingInPrevNextAmount: 3
       });
+      this.$lobbysNode.on('tap', 'img', function() {
+        var name = $(this).data('lobby');
+        if (!xjs.getUserInfo()) {
+          xjs.ui.popup({
+            content: '您需要先登录才能进入游戏',
+            btns: [{
+              name: '确定',
+              then: function() {
+                xjs.router.navigator('#login/', {backHash: '#home/'});
+              }
+            }]
+          })
+        } else {
+          xjs.load({
+            url: 'api/' + name,
+            refreshToken: true
+          }).then(function(result) {
+            location.href = result.url;
+          });
+        }
+      });
     }
   });
 })(xjs);

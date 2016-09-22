@@ -18,13 +18,13 @@
 			overflow: hidden;
 			.input-box {
 				margin-right: fitPx(13px);
-				width: fitPx(400px);
+				width: fitPx(300px);
 				float: left;
 			}
 			.code {
 				width: fitPx(180px);
 				height: fitPx(82px);
-				overflow: hidden;
+				// overflow: hidden;
 				background: #fff;
 			}
 		}
@@ -40,6 +40,23 @@
 			font-size: fitPx(36px);
 			border: none;
 			margin-bottom: fitPx(26px);
+		}
+	}
+	.error-popup {
+		transform: translateY(#{fitPx(150px)});
+		background: transparent;
+		filter: none;
+		&:after {
+			display: none;
+		}
+		p {
+			color: red;
+			&:before {
+				content: "*";
+				background: none;
+				color: red;
+				width: auto;
+			}
 		}
 	}
 }
