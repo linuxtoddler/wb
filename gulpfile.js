@@ -260,7 +260,7 @@ gulp.task('server', function() {
 });
 
 gulp.task('default', function() {
-  sequence('clean:dev', 'imagemin', ['build:html', 'sass', 'json'], ['concat:lib', 'concat:app'], 'build:index', 'server');
+  sequence('clean:dev', 'imagemin', ['build:html', 'sprites', 'sass', 'json'], ['concat:lib', 'concat:app'], 'build:index', 'server');
 });
 
 gulp.task('release', function() {
