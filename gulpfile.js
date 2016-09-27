@@ -260,11 +260,11 @@ gulp.task('server', function() {
 });
 
 gulp.task('default', function() {
-  sequence('clean:dev', 'imagemin', ['build:html', 'sprites', 'sass', 'json'], ['concat:lib', 'concat:app'], 'build:index', 'server');
+  sequence('clean:dev', 'imagemin', 'sprites', ['build:html', 'sass', 'json'], ['concat:lib', 'concat:app'], 'build:index', 'server');
 });
 
 gulp.task('release', function() {
   revStatus = true;
   // sequence('clean:dev', 'imagemin', ['build:html', 'sass', 'json'], ['concat:lib', 'concat:app'], 'uglify', 'build:index', 'clean:surplus');
-  sequence('clean:dev', 'imagemin', ['build:html', 'sprites', 'sass', 'json'], ['concat:lib', 'concat:app'], 'uglify', 'build:index', 'clean:surplus');
+  sequence('clean:dev', 'imagemin', 'sprites', ['build:html', 'sass', 'json'], ['concat:lib', 'concat:app'], 'uglify', 'build:index', 'clean:surplus');
 });
