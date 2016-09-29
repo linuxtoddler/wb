@@ -11,6 +11,7 @@
       return {
         app: 'promolist',
         url: 'api/activitylist',
+        refreshToken: true,
         type: 'GET'
       };
     },

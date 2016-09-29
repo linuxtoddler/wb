@@ -56,7 +56,10 @@
                   {
                     name: '确定',
                     then: function() {
-                      if (param.replaceNode) param.replaceNode.value = data.info;
+                      if (param.replaceNode) {
+                        param.replaceNode.value = data.info;
+                        if(param.field == 'qq') param.replaceNode.nextSibling.style.display = "none"; //隐藏修改按钮
+                      }
                       popup.hide();
                     }
                   }

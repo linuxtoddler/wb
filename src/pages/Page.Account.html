@@ -18,12 +18,16 @@
 	<div class="input-box">
 		<label for="wechat">微信号：</label>
 		<input type="text" name="wechat" value="<%-user.weixin%>" id="wechat" readonly="true" data-xjs-element="wechatNode">
+		<% if (!user.weixin) { %>
 		<div class="menu"><span data-xjs-event="tap: changeWechat;">修改</span></div>
+		<% } %>
 	</div>
 	<div class="input-box">
 		<label for="qq">QQ号码：</label>
 		<input type="text" name="qq" value="<%-user.qq%>" id="qq" readonly="true" data-xjs-element="qqNode">
+		<% if (!user.qq) { %>
 		<div class="menu"><span data-xjs-event="tap: changeQQ;">修改</span></div>
+		<% } %>
 	</div>
 	<!-- <div class="input-box">
 		<label for="email">邮箱：</label>
